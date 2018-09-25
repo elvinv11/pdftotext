@@ -1,0 +1,23 @@
+El shell Bash
+
+MacProgramadores
+
+Tema 3
+Personalizar el
+entorno
+
+Sinopsis:
+
+En este tema veremos como hacer el entorno más agradable personalizando
+distintos aspectos de Bash.
+Empezaremos viendo los ficheros que configuran Bash siempre que nos
+logamos. También veremos como personalizar distintos aspectos del
+comportamiento de Bash, y que variables de entornos participan en esta
+personalización.
+Este es el último tema que dedicamos a aprender a manejar el terminal, el
+resto del tutorial enseñara aspectos más relativos a la programación de
+scripts con Bash.
+
+Pág 36
+
+

@@ -1,0 +1,61 @@
+El shell Bash
+
+MacProgramadores
+
+memoria del proceso Bash para poder usarse. Actualmente, debido a la gran
+cantidad de memoria que tienen los ordenadores, el tener funciones cargadas
+en la memoria de Bash tiene un coste insignificante, con lo que no debería de
+preocuparle el tener cargadas gran cantidad de estas en su entorno.
+Para definir una función existen dos formatos:
+El estilo del Bourne Shell;
+
+O el estilo del C Shell:
+
+function nombrefn
+{
+···
+comandos bash
+···
+}
+
+nombrefn()
+{
+···
+comandos bash
+···
+}
+
+No existe diferencia entre ellos, y usaremos ambos indistintamente. Para
+borrar una función podemos usar el comando unset -f nombrefn.
+Cuando definimos una función se almacena como una variable de entorno
+(con su valor almacenando la implementación de la función). Para ejecutar la
+función simplemente escribimos su nombre seguido de argumentos, como
+cuando ejecutamos un comando. Los argumentos actúan como parámetros
+de la función.
+Podemos ver que funciones tenemos definidas en una sesión usando el
+comando declare -f. El shell imprime las funciones, y su definición,
+ordenadas alfabéticamente. Si preferimos obtener sólo el nombre de las
+funciones podemos usar el comando declare -F.
+Si una función tiene el mismo nombre que un script o ejecutable, la función
+tiene preferencia: Esta regla se ha usado muchas veces para, engañando a
+los usuarios, violar la integridad de su sistema.
+
+1.3. Orden de preferencia de los símbolos de Bash
+A continuación se enumera el orden de preferencia que sigue Bash a la hora
+de resolver un símbolo:
+1.
+2.
+3.
+4.
+5.
+
+Alias.
+Palabras clave (keywords) como function, if o for.
+Funciones
+Comandos internos (p.e. cd o type).
+Scripts y programas ejecutables, para los cuales se sigue el orden en
+que se dan sus directorios en la variable de entorno PATH.
+
+Pág 47
+
+

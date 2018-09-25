@@ -1,0 +1,60 @@
+El shell Bash
+
+MacProgramadores
+
+3.2. Borrar partes de la línea
+Otra operación que es muy común es querer borrar partes de la línea. Las
+combinaciones de teclas que vamos a comentar se resumen en la Tabla 2.4.
+En el apartado 2 ya vimos que combinaciones de tecla proporcionaba el
+terminal, y vimos que con Ctrl+U podíamos borrar desde la posición del
+cursor al principio de la línea. Si lo que queremos es borrar hasta el final de la
+línea podemos usar la combinación de tecla emacs Ctrl+K.
+Si lo que queremos es borrar sólo desde a posición actual del cursor hasta el
+principio de la palabra donde estemos situados, vimos que podíamos usar
+Ctrl+W. Si lo que queremos es borrar de la posición del cursor actual hasta el
+final de la palabra donde estemos situados podemos usar Esc+D.
+Para borrar una sola letra es muy típico que la tecla de borrar hacía atrás ←
+sí que funcione, pero normalmente la tecla DEL no suele funcionar, y en su
+lugar podemos usar Ctrl+D.
+La última operación de borrado se puede deshacer siempre con la tecla
+Ctrl+Y.
+Combinación
+de teclas
+Ctrl+U
+Ctrl+K
+Ctrl+W
+Esc+D
+Ctrl+D
+Ctrl+Y
+
+Descripción
+Borra de la posición actual al principio de la línea
+Borra de la posición actual al final de la línea
+Borra de la posición actual al principio de la palabra
+Borra de la posición actual al final de la palabra
+Borra el carácter actual hacia adelante
+Deshace el último borrado (Yank)
+
+Tabla 2.4: Combinaciones de teclas para borrar
+
+3.3. Buscar en el historial
+Ya comentamos que las teclas del cursor nos permitían movernos por el
+histórico de comandos, pero si queremos buscar un determinado comando
+podemos usar Ctrl+R, que nos permite buscar hacía atrás en el historial un
+comando que contenga un determinado texto. Al pulsar esta combinación de
+teclas el prompt cambia de forma, y según vamos escribiendo nos va
+indicando el comando del histórico que cumple el patrón dado:
+(reverse-i-search)`yuvs':
+result.yuv > result2.yuv
+
+yuvscaler
+
+Pág 30
+
+-O
+
+SIZE_600x400
+
+<
+
+

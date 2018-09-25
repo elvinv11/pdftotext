@@ -1,0 +1,47 @@
+El shell Bash
+
+MacProgramadores
+
+En el ejemplo, la sustitución de comandos $(ListaFecha "$1") produce
+una expansión, y llama a la función ListaFecha, la cual ejecuta cada uno
+de los comandos del pipe expandidos, es decir, observe que en vez de
+ListaFecha "$1" aparece ListaFecha '9 Aug'. Al acabar la
+sustitución de comandos se reduce en uno el nivel de expansiones y se
+ejecuta el comando ls -lad aquello donde Makefile aquello
+lsfecha es el resultado de la expansión de la sustitución de comandos.
+El símbolo + es personalizable usando el cuarto prompt PS4. Por ejemplo si
+hacemos:
+$ export PS4='xtrace->'
+$ bash -x lsfecha '9 Aug'
+xxtrace->ListaFecha '9 Aug'
+xxtrace->ls -lad Makefile aquello lsfecha
+xxtrace->grep '9 Aug'
+xxtrace->cut -c54xtrace->ls -lad aquello
+-rwxr-xr-x 1 fernando admin
+80 19 Aug 22:16 aquello
+Obsérvese que para múltiples niveles de expansión el prompt imprime sólo el
+primer carácter de PS4 con el fin de hacer más legible la traza.
+Podemos personalizar aun más el prompt poniendo variables en éste. Por
+ejemplo, la variable especial $LINENO nos permite saber la línea del script
+que estamos ejecutando. Tal como hicimos con PS1 en el Tema 3, podemos
+posponer la evaluación de esta variable hasta que se vaya a mostrar el
+prompt encerrándola entre comillas fuertes:
+$ export PS4='$0:$LINENO:'
+$ bash -x lsfecha '9 Aug'
+llsfecha:12:ListaFecha '9 Aug'
+llsfecha:9:ls -lad Makefile aquello lsfecha
+llsfecha:9:grep '9 Aug'
+llsfecha:9:cut -c54lsfecha:12:ls -lad aquello
+-rwxr-xr-x 1 fernando admin
+80 19 Aug 22:16 aquello
+Lo importante de usar la opción xtrace es que nos permite encontrar
+errores en nuestro programa al poder ver como se expanden los valores. Por
+ejemplo, si tenemos un script de la forma:
+fntcb=mifich.txt
+mejorcli=$(cut -f3 $futcb)
+el cual se queda colgado, y lo ejecutamos con la opción xtrace vemos que
+nos da la salida:
+
+Pág 152
+
+

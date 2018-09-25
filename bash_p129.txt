@@ -1,0 +1,22 @@
+El shell Bash
+
+MacProgramadores
+
+Tema 8
+Control de
+procesos
+
+Sinopsis:
+
+Una característica de UNIX es que el usuario ejerce un control sobre los
+procesos que en el sistema se están ejecutando. Aunque este control también
+sería posible tenerlo desde otros sistemas operativos más orientados al
+usuario doméstico, estos sistemas tradicionalmente han tratado de ocultar la
+gestión de procesos al usuario, en pro de la facilidad de uso.
+Empezaremos este tema viendo las primitivas de gestión de procesos que
+ofrece el shell, para centrarnos luego en estudiar las técnicas de
+comunicación entre procesos que podemos controlar desde Bash.
+
+Pág 129
+
+

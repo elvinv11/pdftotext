@@ -1,0 +1,86 @@
+El shell Bash
+
+MacProgramadores
+
+if [ \( $reintegro -le $saldo \) -a \
+\( $reintegro -le $max_cajero \) ]
+then
+····
+fi
+
+1.5.3.
+
+Comprobar atributos de ficheros
+
+El tercer tipo de operadores de comparación nos permiten comparar atributos
+de fichero. Existen 22 operadores de este tipo que se resumen en la Tabla
+5.3.
+Operador
+-a fichero
+-b fichero
+-c fichero
+-d fichero
+-e fichero
+-f fichero
+-g fichero
+-G fichero
+-h fichero
+-k fichero
+-L fichero
+-N fichero
+-O
+-p
+-r
+-s
+-S
+-u
+-w
+-x
+
+fichero
+fichero
+fichero
+fichero
+fichero
+fichero
+fichero
+fichero
+
+fich1 -nt fich2
+fich1 -ot fich2
+fich1 -ef fich2
+
+Verdadero si ...
+fichero existe
+fichero existe y es un dispositivo de bloque
+fichero existe y es un dispositivo de carácter
+fichero existe y es un directorio
+fichero existe (equivalente a -a)
+fichero existe y es un fichero regular
+fichero existe y tiene activo el bit de setgid
+fichero existe y es poseído por el group ID efectivo
+fichero existe y es un enlace simbólico
+fichero existe y tiene el stricky bit activado
+fichero existe y es un enlace simbólico
+fichero existe y fue modificado desde la última
+lectura
+fichero existe y es poseído por el user ID efectivo
+fichero existe y es un pipe o named pipe
+fichero existe y podemos leerlo
+fichero existe y no está vacío
+fichero existe y es un socket
+fichero existe y tiene activo el bit de setuid
+fichero existe y tenemos permiso de escritura
+fichero existe y tenemos permiso de ejecución, o
+de búsqueda si es un directorio
+La fecha de modificación de fich1 más moderna que
+(Newer Than) la de fich2
+La fecha de modificación de fich1 más antigua que
+(Older Than) la de fich2
+fich1 y fich2 son el mismo fichero (Equal File)
+
+Tabla 5.3: Operadores para comprobar atributos de fichero
+
+Pág 77
+
+

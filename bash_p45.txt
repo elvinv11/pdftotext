@@ -1,0 +1,28 @@
+El shell Bash
+
+MacProgramadores
+
+Tema 4
+Programación
+básica del shell
+
+Sinopsis:
+
+Este tema introduce los conceptos más básicos de la programación de scripts
+y funciones con Bash.
+En este momento debería de ser capaz de manejarse con el terminal (el modo
+interactivo) con más soltura que antes de leer este tutorial. Ahora
+pretendemos empezar a entender los scripts que configuran su máquina, y a
+que sea capaz de crear sus propios scripts.
+El tema supone que el lector conoce los conceptos básicos de programación
+en algún lenguaje estructurado (C, Pascal, Basic). Bash no usa los conceptos
+de programación orientada a objetos, pero si conoce este tipo de
+programación (p.e. Java) también le servirá aquí, ya que la programación
+estructurada es un subconjunto de la orientada a objetos.
+Bash es un lenguaje muy críptico, con lo que sería recomendable que se fijara
+bien en la sintaxis, y que intentara hacer los ejercicios que proponemos en su
+ordenador con el fin de consolidad las ideas básicas que vamos a desarrollar
+en este tema.
+Pág 45
+
+

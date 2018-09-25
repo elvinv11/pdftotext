@@ -1,0 +1,45 @@
+El shell Bash
+
+MacProgramadores
+
+3.5. Ejemplo de ejecución
+Para ver como funciona el depurador, imaginemos que tenemos un script
+llamado prueba como el que muestra el Listado 9.11.
+a=0
+echo "La variable a vale $a"
+a=1
+echo "La variable a vale $a"
+Listado 9.11: Ejemplo de script de prueba
+
+A continuación se muestra un ejemplo de la ejecución del depurador para
+depurar este script:
+$ bashdb prueba
+Parado en linea 0
+bashbd>x
+Activada la traza
+bashbd>p
+0: >a=0
+1: echo "La variable a vale $a"
+2: a=1
+3: echo "La variable a vale $a"
+bashbd>bp 3
+bashbd>p
+0: >a=0
+1: echo "La variable a vale $a"
+2: a=1
+3:* echo "La variable a vale $a"
+bashbd>s
++ :1:a=0
+Parado en linea 1
+bashbd>g
+La variable a vale 0
++ :2:echo "La variable a vale $a"
++ :3:a=1
+Detenido en breakpoint en linea 3
+bashbd>s
+La variable a vale 1
++ :4:echo "La variable a vale $a"
+
+Pág 167
+
+

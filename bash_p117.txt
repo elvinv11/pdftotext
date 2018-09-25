@@ -1,0 +1,63 @@
+El shell Bash
+
+MacProgramadores
+
+$ printf "Hola mundo\n"
+Hola mundo
+El formato de este comando es muy parecido al de la función printf() de
+C:
+printf cadenaformato [argumentos]
+Dentro de la cadena de formato que recibe como primer argumento
+pueden aparecer especificadores de formato, los cuales empiezan por % y
+se describen en la Tabla 7.4.
+Especificador
+%c
+%d
+%i
+%e
+%E
+%f
+%g
+%G
+%o
+%s
+%b
+%q
+%u
+%x
+%X
+%%
+
+Descripción
+Imprime el primer carácter de una variable cadena
+Imprime un número decimal
+Igual que %d (integer)
+Formato exponencial b.precisione[+-]e
+Formato exponencial b.precisionE[+-]e
+Número en coma flotante b.precision
+El que menos ocupa entre %e y %f
+El que menos ocupa entre %E y %f
+Octal sin signo
+Cadena (string)
+Interpreta las secuencias de escape del argumento cadena
+Escribe el argumento cadena de forma que pueda ser usado
+como entrada a otro comando
+Número sin signo (unsigned)
+Hexadecimal con letras en minúscula
+Hexadecimal con letras en mayúscula
+% literal
+
+Tabla 7.4: Especificadores de formato de printf
+
+Un ejemplo de uso de los especificadores de formato es el siguiente:
+$ n=30
+$ nombre=Fernando
+$ printf "El cliente %d es %s\n" $n $nombre
+El cliente 30 es Fernando
+El especificador de formato tiene el siguiente formato general:
+%[Flag][Ancho][.Precision]Especificador
+El significado de estos campos depende de si el especificador de formato es
+para una cadena de caracteres o para un número.
+Pág 117
+
+

@@ -1,0 +1,45 @@
+El shell Bash
+
+MacProgramadores
+
+Ya que por defecto este delimitador es el espacio, y no queremos que el
+espacio se consideren cambio de palabra, sino que queremos que lo sea el
+cambio de línea.
+
+3.3. Sentencias de control de flujo aritméticas
+Las expresiones aritméticas pueden usarse en las distintas sentencias de
+control de flujo, en cuyo caso la expresión va entre dobles paréntesis, pero
+sin el $ delante, por ejemplo, el if aritmético tendría la forma:
+if ((expresión aritmética)); then
+cuerpo
+fi
+O el while aritmético tendría la forma:
+while ((expresion aritmética))
+do
+cuerpo
+done
+Ejercicio 6.4
+Implementar un juego que genere un número aleatorio entre 0 y 99, y que
+nos lo pregunte hasta que lo acertemos, o fallemos 10 veces. Para ello usar
+un if y un while aritmético. Puede generar un número aleatorio leyendo la
+variable $RANDOM la cual cada vez que se lee devuelve un número distinto.
+let intentos=10
+let solucion=$RANDOM%100
+while ((intentos-->0))
+do
+read -p "Indique un numero:" numero
+if ((numero==solucion)); then
+echo "ACERTASTE ERA $solucion, ENHORABUENA!"
+exit
+elif ((numero<solucion)); then
+echo "Es mayor"
+else
+echo "Es menor"
+fi
+done
+echo "PERDISTE POR SUPERAR LOS 10 INTENTOS"
+Listado 6.3: Juego de adivinar un número
+
+Pág 99
+
+

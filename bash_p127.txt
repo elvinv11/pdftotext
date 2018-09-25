@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+Por ejemplo podemos hacer:
+$ fondo du -d 1 /
+La implementación del script usando eval es tan sencilla como esta:
+eval "$@" > resultado.log 2>&1 &
+Ejercicio 7.2
+Implementar la utilidad make usando un script. La utilidad make lee un
+fichero con una serie de reglas de la forma:
+target : source1 source2
+Comandos a ejecutar
+De forma que si alguno de los ficheros source es más reciente que el target
+ejecuta los comandos de la regla. Un ejemplo de regla típico se muestra en el
+Listado 7.13:
+programa.o : programa.c programa.h
+gcc -c programa.c
+programa : programa.o
+gcc programa.o -o programa
+Listado 7.13: Ejemplo de fichero de make
+
+Donde si programa.c o programa.h son más recientes que programa.o,
+compila el fichero programa.c para generar el fichero objeto programa.o,
+y si el fichero objeto programa.o es más reciente que el ejecutable
+programa, vuelve a enlazar el fichero objeto.
+Podemos implementar este programa con un script como el que se muestra
+en el Listado 7.14. El script ejecuta la función ejecutareglas() con la
+entrada estándar redirigida al fichero que pasemos como argumento del
+script, en nuestro caso el fichero tendrá la forma del Listado 7.13.
+La función se ejecuta mientras que haya texto que procesar, es decir
+mientras que read devuelva el código de terminación 0. Para ello hemos
+hecho un bucle infinito que sólo se acaba al cumplirse este fin de fichero. El
+comando true es un comando que siempre devuelve el código de
+terminación 0.
+Ahora al ejecutarlo obtenemos:
+$ touch programa.c
+$ mimake Makefile
+Pág 127
+
+

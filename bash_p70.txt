@@ -1,0 +1,45 @@
+El shell Bash
+
+MacProgramadores
+
+diferencias, y 2 cuando se produce algún error (p.e que uno de los ficheros
+pasados como argumento no se puede leer).
+La sentencia if comprueba el código de terminación de un comando en la
+condicion, si éste es 0 la condición se evalúa como cierta. Luego la forma
+normal de escribir una sentencia condicional if es:
+if comando ; then
+Procesamiento normal
+else
+Procesamos el error
+fi
+En el ejercicio 4.5 del apartado 4 del Tema 4 vimos que la función:
+function ira
+{
+PILADIR="$1 ${PILADIR:-$PWD}"
+cd ${1:?"Falta el directorio como argumento"}
+echo $PILADIR
+}
+Siempre metía el directorio en la pila, incluso si el directorio no existía y el
+cambio de directorio fallaba. Vamos a aprovechar el código de terminación del
+comando cd para no meter este directorio en la pila si el cambio falla:
+function ira
+{
+if cd ${1:?"Falta el directorio como argumento"} ; then
+PILADIR="$1 ${PILADIR:-$OLDPWD}"
+echo $PILADIR
+else
+echo "Directorio $1 no valido"
+fi
+}
+Ahora se nos informa del error si cd falla, y no se actualiza la pila. Obsérvese
+que ahora el cambio de directorio con cd se produce antes de actualizar
+PILADIR, con lo que hemos cambiado $PWD por $OLDPWD.
+
+1.3. Las sentencias return y exit
+Los comandos UNIX retornan un código de terminación indicando el resultado
+de una operación, pero qué pasa si estamos haciendo una función: ¿Cómo
+retornamos el código de terminación?.
+
+Pág 70
+
+

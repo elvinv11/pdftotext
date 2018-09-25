@@ -1,0 +1,32 @@
+El shell Bash
+
+MacProgramadores
+
+2.4. Expansión de variables usando llaves
+Realmente la forma que usamos para expandir una variable $variable es
+una simplificación de la forma más general ${variable}. La simplificación
+se puede usar siempre que no existan ambigüedades. En este apartado
+veremos cuando se producen las ambigüedades que nos obligan a usar la
+forma ${variable}.
+La forma ${variable} se usa siempre que la variable vaya seguida por una
+letra, dígito o guión bajo (_), en caso contrario podemos usar la forma
+simplificada $variable. Por ejemplo si queremos escribir nuestro nombre
+(almacenado en la variable nombre) y nuestro apellido (almacenado en la
+variable apellido) separados por un guión podríamos pensar en hacer:
+$ nombre=Fernando
+$ apellido=Lopez
+$ echo "$nombre_$apellido"
+Lopez
+Pero esto produce una salida incorrecta porque Bash ha intentado buscar la
+variable $nombre_ que al no existir la ha expandido por una cadena vacía.
+Para solucionarlo podemos usar las llaves:
+$ echo "${nombre}_$apellido"
+Fernando_Lopez
+Otro lugar donde necesitamos usar llaves es cuando vamos a sacar el décimo
+parámetro posicional. Si usamos $10, Bash lo expandirá por $1 seguido de
+un 0, mientras que si usamos ${10} Bash nos dará el décimo parámetro
+posicional.
+
+Pág 55
+
+

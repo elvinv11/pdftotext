@@ -1,0 +1,37 @@
+El shell Bash
+
+MacProgramadores
+
+Este ejercicio, tal como está ahora, puede producir situaciones extrañas si el
+fichero de entrada no tiene la extensión .bmp, además el comando fallaría si
+el fichero de entrada no existe. En el siguiente tema usaremos los nuevos
+conocimientos que desarrollemos para arreglar estos problemas.
+Ejercicio 4.3
+Los directorios de búsqueda que almacena la variable de entorno PATH a
+veces resultan difíciles de ver debido a que cuesta encontrar el delimitador
+dos puntos (:). Escribir un script llamado verpath que muestre los
+directorios del PATH uno en cada línea.
+Para hacer esto podemos sustituir el símbolo dos puntos (:) por un símbolo
+de nueva línea '\n' usando un operador de búsqueda de patrones de la
+forma:
+$ echo -e ${PATH//:/'\n'}
+/sw/bin
+/sw/sbin
+/bin
+/sbin
+/usr/bin
+/usr/local/bin
+/usr/sbin
+/sw/bin
+/usr/X11R6/bin
+.
+
+3.3. El operador longitud
+El operador longitud nos permite obtener la longitud (en caracteres) del valor
+de una variable. Tiene la forma ${#var} donde var es la variable cuyo valor
+queremos medir. Por ejemplo si la variable nombre vale Fernando,
+${#nombre} devolverá 8.
+
+Pág 62
+
+

@@ -1,0 +1,59 @@
+El shell Bash
+
+MacProgramadores
+
+Listado 9.5: Implementación de _cmdprompt()
+
+3.4.3.
+
+Los breakpoints por número de línea
+
+Vamos a estudiar ahora los comandos asociados a los breakpoint de número
+de línea. El comando bp llama a la función _ponbp(), la cual puede hacer
+dos cosas: Si no recibe argumentos lista los breakpoints llamando a
+_print(), sino fija un breakpoint en el argumento dado. El Listado 9.6
+muestra la implementación de _ponbp().
+# Pode un breakpoint o los lista si no recibe parametros
+function _ponbp
+{
+if [ -z "$1" ]; then
+_print
+elif [ -n "$(echo $1|grep '^[0-9]*')" ]; then
+if [ -n "${_lineas[$1]}" ]; then
+local i
+_lineasbp=($(echo $( (for i in ${_lineasbp[*]} $1
+do
+echo $i
+done) | sort -n) ))
+else
+_msg "La linea $1 esta vacia"
+fi
+else
+_msg "Por favor de como argumento un valor numerico"
+fi
+}
+# Imprime las lineas del script con breakpoint
+# y pos actual
+function _print
+{
+(
+local i
+# Itera el array _lineas
+local j=0
+# Itera el array _lineasbp
+local bp=' ' # Simbolo de breakpoint
+local pos=' ' # Simbolos de pos actual
+for ((i=0 ; i < ${#_lineas[@]} ; i++ ))
+do
+if [ ${_lineasbp[$j]} ] &&\
+(( ${_lineasbp[$j]} == $i )); then
+bp='*'
+let j=$j+1
+else
+bp=' '
+fi
+if (( $_lineaactual == $i )); then
+pos='>'
+Pág 163
+
+

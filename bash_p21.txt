@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+$ echo 2*3>5 es una expresion cierta
+Al ejecutarlo podemos observar que no da ninguna salida, pero realmente ha
+creado el fichero 5 con el texto 2*3 es una expresion cierta. La razón
+está en que >5 ha sido entendido como redirigir al fichero 5, y además se ha
+intentado ejecutar el carácter especial *, pero al no encontrar ningún fichero
+que cumpliera el patrón no se ha expandido y se ha pasado el parámetro a
+echo tal cual.
+Sin embargo si entrecomillamos usando ', el carácter de entrecomillado
+fuerte obtenemos el resultado esperado:
+$ echo '2*3>5 es una expresion cierta'
+2*3>5 es una expresion cierta
+Un ejemplo más práctico del entrecomillado es el comando find que nos
+permite buscar ficheros por muchos criterios. Por ejemplo para buscar por
+nombre usa el argumento -name patron. Si por ejemplo queremos buscar
+todos los ficheros .c en nuestra máquina podemos intentar hacer:
+$ find / -name *.c
+Pero si tenemos la mala suerte de que en el directorio actual exista algún
+fichero .c, sustituirá el comodín y buscará el nombre de el/los ficheros de
+nuestro directorio actual en el disco duro. Para evitarlo es recomendable
+entrecomillarlo:
+$ find / -name '*.c'
+En la Tabla 1.2 aparece el entrecomillado débil ", el cual pasa sólo por
+algunos de los pasos del shell, o dicho con otras palabras, interpreta sólo
+algunos caracteres especiales. Más adelante veremos cuando es preferible
+usar este tipo de entrecomillado, de momento usaremos sólo el
+entrecomillado fuerte.
+
+6.2. Caracteres de escape
+Otra forma de cambiar el significado de un carácter de escape es precederlo
+por \, que es lo que se llama el carácter de escape.
+Por ejemplo en el ejemplo anterior podríamos haber hecho:
+$ echo 2\*3\>5 es una expresion cierta
+2*3>5 es una expresion cierta
+
+Pág 21
+
+

@@ -1,0 +1,43 @@
+El shell Bash
+
+MacProgramadores
+
+Sin embargo si ahora usamos variables de tipo entero:
+$ declare -i var1=5
+$ declare -i var2=4
+$ declare -i resultado
+$ resultado=$var1*$var2
+$ echo $resultado
+20
+Para que la operación aritmética tenga éxito no es necesario que declaremos
+como enteras a var1 y var2, basta con que recojamos el valor en la variable
+resultado declarada como entera. Es decir, podremos hacer:
+$ resultado=4*6
+$ echo $resultado
+24
+E incluso podemos recoger resultados de operaciones con variables
+inexistentes:
+$ resultado=4*var_inexistente
+$ echo $resultado
+0
+Podemos saber el tipo de una variable con la opción -p. Por ejemplo:
+$ declare -p resultado
+declare -i resultado="24"
+La opción -x es equivalente a usar el comando export sobre la variable.
+Ambas son formas de exportar una variable de entorno.
+La opción -r declara a la variable como de sólo lectura, con lo que a partir de
+ese momento no podremos modificarla ni ejecutar unset sobre ella.
+Existe otro comando interno llamado readonly que nos permite declarar
+variables de sólo lectura, pero que tiene más opciones que declare -r. En
+concreto readonly -p nos muestra todas las variables de sólo lectura:
+$ readonly -p
+declare -ar BASH_VERSINFO='([0]="2" [1]="05b" [2]="0"
+[3]="1" [4]="release" [5]="powerpc-apple-darwin7.0")'
+declare -ir EUID="503"
+declare -ir PPID="686"
+declare -ir UID="503"
+Además se nos indica si la variable es de tipo array (-a) o entero (-i).
+
+Pág 94
+
+

@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+# Script que llama a una funcion para saludar
+function DiHola
+{
+echo "Hola $1"
+}
+DiHola $1
+Listado 4.3: Script que pasa el argumento a una función para que salude
+
+A diferencia de los parámetros posiciónales, el resto de variables que
+definimos en un script o función son globales, es decir una vez definidas en el
+script son accesibles (y modificables) desde cualquier función. Por ejemplo,
+en el Listado 4.4 se muestra un script llamado dondeestoy, en el que la
+variable donde está definida por el script y modificada por la función.
+# Ejemplo de variable global
+function EstasAqui
+{
+donde='Dentro de la funcion'
+}
+donde='En el script'
+echo $donde
+EstasAqui
+echo $donde
+Listado 4.4: Ejemplo de variable global
+
+Al ejecutarlo obtenemos:
+$ dondeestoy
+En el script
+Dentro de la funcion
+Si queremos que una variable no posicional sea local debemos de ponerla el
+modificador local, el cual sólo se puede usar dentro de las funciones (no en
+los scripts). Por ejemplo en el Listado 4.5 ahora la función se crea su propia
+variable local donde y no modifica la global del script.
+# Ejemplo de variable global
+function EstasAqui
+{
+local donde='Dentro de la funcion'
+}
+Pág 51
+
+

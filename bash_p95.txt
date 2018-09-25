@@ -1,0 +1,24 @@
+El shell Bash
+
+MacProgramadores
+
+Usando la opción -f podemos hacer a una función de sólo lectura (que el
+usuario no pueda modificar la función). Por ejemplo:
+$ readonly -f ira
+Hace que la función ira() no se pueda modificar.
+Muchas veces se ataca un sistema modificando una función que se sabe que
+va a ejecutar un script en modo súperusuario (haciendo que la función haga
+algo distinto, o algo más de lo que hacía originalmente). Para evitar este
+ataque las funciones que van a ejecutarse en modo súperusuario se deben
+definir sólo dentro del script que las usa, aunque a veces se necesitan llamar
+desde fuera y es recomendable protegerlas con la opción -r, ya que una vez
+que una función se marca como de sólo lectura ya no se puede quitar este
+permiso. Es decir si usamos la opción -n para quitar este atributo, en
+principio el comando parece funcionar:
+$ readonly -n ira
+Pero si luego intentamos redefinir la función se producirá un error indicando
+que la función sigue siendo de sólo lectura.
+
+Pág 95
+
+

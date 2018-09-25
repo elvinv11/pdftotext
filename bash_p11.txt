@@ -1,0 +1,43 @@
+El shell Bash
+
+MacProgramadores
+
+serían todos los caracteres ASCII excepto los dígitos, y [a-zA-Z0-9] serían
+todas las letras mayúsculas, minúsculas y los dígitos.
+La razón por la que este comodín no ha sido tan usado como se esperaba es
+que expande por un, y sólo un dígito, por ejemplo programa.[co]
+encontraría programa.c y programa.o, pero no programa.cpp.
+Es importante tener en cuenta que los comandos cuando se ejecutan no ven
+los comodines sino el resultado de la expansión. Por ejemplo si ejecutamos el
+comando:
+$ cp g* /tmp
+g* se expande por todos los ficheros que cumplen el patrón, y esto es lo que
+se pasa al comando cp, pero si no existiera ningún fichero cuyo nombre
+cumpliese el patrón g*, este valor no se expande sino que se pasa tal cual al
+comando, y éste será el que fallará:
+$ cp g* /tmp/
+cp: g*: No such file or directory
+Es decir, como podríamos pensar, al fallar no se pasa una lista vacía al
+comando. Piense por un momento lo que ocurriría con algunos comandos si
+se hubiese diseñado así.
+Este funcionamiento es ligeramente distinto al de tcsh, donde si no se
+expande el comodín no se ejecuta el comando, en Bash se ejecuta el
+comando aunque luego éste produzca un error.
+
+2.2. El comodín tilde
+El comodín tilde ~ se usa para referirse al directorio home de los usuarios
+(/Users en Mac OS X o /home en la mayoría de las máquinas UNIX), por
+ejemplo si usamos ~carol/carta.txt nos lo expande por
+/Users/carol/carta.txt.
+Además podemos usar el comodín tilde para referirnos a nuestro propio
+directorio, el cuyo caso debemos de precederlo por una barra, p.e.
+~/carta.txt se expande por el nombre de mi directorio, en mi caso
+/Users/fernando/carta.txt.
+Observe la diferencia entre poner la barra y no ponerla, si no la hubiera
+puesto (hubiera puesto ~carta.txt), me habría expandido por la ruta
+/Users/carta.txt, y si no existe un usuario con el nombre carta.txt
+hubiera producido un error indicando que no existe el directorio.
+
+Pág 11
+
+

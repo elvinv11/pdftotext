@@ -1,0 +1,49 @@
+El shell Bash
+
+MacProgramadores
+
+1.2. El comando interno getopts
+Cuando la complejidad de las posibles opciones y argumentos de un comando
+crece, el comando interno getopts nos permite procesar opciones de línea
+de comandos más cómodamente1.
+Además getopts nos permite procesar opciones cuando están agrupadas
+(p.e. -abc en vez de -a -b -c) y argumentos de opciones cuando estos no
+están separados de la opción por un espacio (-barg en vez de -b arg)2.
+El comando interno getopts es una evolución del antiguo comando getopt
+del Bourne Shell, el cual se integra mejor en la sintaxis del lenguaje y es más
+flexible.
+Generalmente el comando getopts se usa junto con un bucle while como
+vamos a ver. El comando getopts recibe dos argumentos: El primero es una
+cadena con las letras de las opciones que vamos a reconocer. Si la opción
+tiene un argumento se precede por dos puntos (:). El argumento de la opción
+lo podemos leer consultando la variable de entorno OPTARG. El comando
+getopts coge una de las opciones de la línea de comandos y la almacena en
+una variable cuyo nombre se da como segundo argumento. Mientras que el
+comando encuentra opciones devuelve el código de terminación 0, cuando no
+encuentra más opciones devuelve el código de terminación 1.
+En ejemplo del apartado anterior lo podemos procesar con getopts así:
+while getopts ":ab:c" opt
+do
+case $opt in
+a ) Procesa opción -a;;
+b ) Procesa opción -b
+$OPTARG es el argumento de la opción
+c ) Procesa opción -c;;
+\?) echo 'Use hacer [-a] [-b arg] [-c] args...'
+exit 1;;
+esac
+done
+shift $(($OPTIND -1))
+Procesa los argumentos
+Obsérvese que en la variable opt obtenemos la opción sin guión delante. Por
+desgracia, por defecto getopts produce un error de la forma
+1
+
+Un inconveniente que tiene este comando es que las opciones deben ser de una sola letra,
+es decir -a sería una opción válida, pero -activa no.
+2
+Las Command Syntax Standard Rules del UNIX User's Manual desaconsejan esta forma de
+pasar argumentos a las opciones, aunque en la práctica muchos comandos UNIX la utilizan.
+Pág 90
+
+

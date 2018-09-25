@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+$ cd Music/
+Para ello podemos añadir la siguiente línea al fichero de configuración de
+readline:
+# Ignora diferencias de mayusculas/minusculas al
+# completar con tabulador
+set completion-ignore-case on
+
+4.2. Asignación de teclas de sesión
+Si lo que queremos es probar combinaciones de teclas que no queremos
+almacenar de forma permanente podemos usar el comando bind, cuya
+sintaxis es similar a la del fichero de configuración, pero tenemos que
+encerrar cada asignación entre comillas blandas o fuertes. Por ejemplo:
+$ bind "\"\C-x\C-g\": dump-functions"
+Si queremos ver las asignaciones de teclas que hay hechas a cada función de
+readline podemos usar el comando:
+$ bind -P
+Este comando es muy útil para que no asignemos una combinación de teclas
+a otra que ya existe. Por ejemplo, en el apartado anterior para sacar las
+funciones de readline creamos la combinación de teclas Ctrl+X Ctrl+F, pero al
+usar este comando descubrimos que ya existía la combinación Ctrl+G que
+hace lo mismo:
+$ bind -P
+··················
+dump-functions can be found on "\C-g", "\C-x\C-f".
+··················
+De hecho también podríamos haber sacado las funciones de readline usando
+el comando:
+$ bind -l
+Podemos sacar todas las asignaciones de teclas en formato inputrc usando
+el comando:
+$ bind -p
+En este caso sería muy útil enviar esta salida a un fichero para posterior
+edición:
+
+Pág 34
+
+

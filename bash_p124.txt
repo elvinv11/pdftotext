@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+{
+IFS=:
+while read grupo asterisco ID resto
+do
+if [ $1 = $grupo ]; then
+echo $ID
+exit
+fi
+done
+} < /etc/group > idbuscado
+Listado 7.11: Ejemplo de redirección de la entrada y salida de un bloque de comandos
+
+También podemos redirigir la salida de un bloque de comandos a otro
+comando. El Listado 7.12 muestra un ejemplo de un bloque de comandos que
+pasa su salida a cut usando un pipe. En este caso, el bloque de comandos
+tiene redirigida su entrada estándar para leer de /etc/group, y la salida del
+bloque de comandos se envía a través de un pipe a cut.
+{
+IFS=:
+while read grupo asterisco ID resto
+do
+if [ $1 = $grupo ]; then
+echo "$grupo:$asterisco:$ID:resto"
+break
+fi
+done < /etc/group
+} | cut -d ':' -f 3
+Listado 7.12: Ejemplo de redirección de la salida de un bloque de comandos con un pipe
+
+En el apartado 1.2 de este tema vimos que podíamos usar el comando exec
+para modificar la entrada o salida estándar de un conjunto de comandos, sin
+embargo el uso de bloques de comandos es una solución más elegante, y se
+recomienda siempre que se pueda usar.
+
+Pág 124
+
+

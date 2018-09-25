@@ -1,0 +1,31 @@
+El shell Bash
+
+MacProgramadores
+
+8. La sustitución de procesos
+La sustitución de procesos es un complemento a la sustitución de
+comandos que vimos en el apartado 4 del Tema 4.
+Reacuérdese que la sustitución de comandos nos permitía asignar la salida
+estándar de un comando a una variable. La sustitución de procesos lo que
+nos permite el asignar la salida estándar de un proceso a un named pipe,
+los cuales se suelen almacenar como ficheros en el directorio /dev/fd/, y
+este fichero se pasa a otro comando para que procese su contenido.
+Existen dos operadores de sustitución de procesos: <(comando) que asigna
+la salida estándar del comando a un fichero (named pipe) de sólo lectura, y
+>(comando) que asigna la salida del comando a un named pipe de sólo
+escritura.
+Por ejemplo grep "prueba.txt" <(ls -la) es equivalente a ls la|grep "prueba.txt".
+Realmente la sustitución de comandos lo que nos devuelve es el nombre del
+fichero donde se ha depositado la salida estándar del comando. Por ejemplo:
+$ echo <(ls -la)
+/dev/fd/63
+podemos usar la sustitución de procesos para encontrar las diferencias entre
+los ficheros de los directorios dir1 y dir2 así:
+$ diff <(ls -la dir1) <(ls -la dir2)
+O bien, si tenemos dos comandos comando1 y comando2 que producen una
+determinada salida, podemos comparar sus salidas usando:
+$ diff <(comando1) <(comando2)
+
+Pág 149
+
+

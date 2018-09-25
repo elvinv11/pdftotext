@@ -1,0 +1,46 @@
+El shell Bash
+
+MacProgramadores
+
+2.2. La señal SIGERR
+La señal SIGERR se lanza siempre que un comando de un script acaba con
+un código de terminación distinto de 0. La función que la captura puede hacer
+uso de la variable ? para obtener su valor. Por ejemplo:
+function CapturadoERR
+{
+ct=$?
+echo "El comando devolvio el codigo de terminación $ct"
+}
+trap CapturadoERR ERR
+Sería una buena mejora el incluir el número de línea donde se ha producido el
+código de terminación, pero si hacemos:
+function CapturadoERR
+{
+ct=$?
+echo "Codigo de terminación $ct en linea $LINENO"
+}
+trap CapturadoERR ERR
+Lo que acabamos obteniendo es el número de línea de la sentencia de la
+función CapturadoERR. Podemos solucionar este problema así:
+function CapturadoERR
+{
+ct=$?
+echo "Codigo de terminación $ct en linea $LINENO"
+}
+trap 'CapturadoERR $LINENO' ERR
+Donde debemos de encerrar entre comillas fuertes el comando a ejecutar por
+trap, ya que sino la variable se sustituiría por el número de línea del
+comando trap. Sin embargo, al encerrarlo entre comillas fuertes, la variable
+no se sustituye por su valor hasta el momento de ejecutar la función, y se
+sustituye por el valor de la línea donde se detecta el código de terminación
+erróneo.
+También existe una forma alternativa de pedir al shell que nos informe si un
+comando acaba con un código de terminación distinto de 0, que es fijando la
+opción del shell set -o errtrace (o set -E)1.
+
+1
+
+La opción errtrace está disponible sólo a partir de Bash 3.0
+Pág 155
+
+

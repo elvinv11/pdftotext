@@ -1,0 +1,48 @@
+El shell Bash
+
+MacProgramadores
+
+1. Las sentencias condicionales
+1.1. Las sentencias if, elif y else
+La sentencia condicional tiene el siguiente formato:
+if condicion
+then
+sentencias
+elif condicion
+then
+sentencias
+else
+sentencias
+fi
+Este lenguaje nos obliga a que las sentencias estén organizadas con estos
+retornos de carro, aunque algunas personas prefieren poner los then en la
+misma línea que los if, para lo cual debemos de usar el separador de
+comandos, que en Bash es el punto y coma (;) así:
+if condicion ; then
+sentencias
+elif condicion ; then
+sentencias
+else
+sentencias
+fi
+
+1.2. Los códigos de terminación
+En UNIX los comandos terminan devolviendo un código numérico al que se
+llama código de terminación (exit status) que indica si el comando tuvo
+éxito o no1.
+Aunque no es obligatorio que sea así, normalmente un código de terminación
+0 significa que el comando terminó correctamente, y un código entre 1 y 255
+corresponde a posibles códigos de error2. En cualquier caso siempre conviene
+consultar la documentación del comando para interpretar mejor sus códigos
+de terminación. Por ejemplo el comando diff devuelve 0 cuando no
+encuentra diferencias entre los ficheros comparados, 1 cuando hay
+1
+
+Para los programadores C, este código coresponde con el retorno de la función main()
+El código de terminación 127 lo usa el shell para indicar que el comando no ha sido
+encontrado, con lo que no debe usase por los comandos para evitar confusiones
+2
+
+Pág 69
+
+

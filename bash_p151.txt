@@ -1,0 +1,55 @@
+El shell Bash
+
+MacProgramadores
+
+1. Opciones de Bash para depuración
+El shell tiene una serie de opciones para la depuración las cuales, o bien se
+pasan como argumentos al lanzar bash, o bien se activan con el comando
+set -o opcion. Si usamos set -o opcion estamos activando la opción,
+si usamos set +o opcion la estamos desactivando. Es decir, al revés de lo
+que parece. Las opciones que vamos a empezar comentando se describen en
+la Tabla 9.1.
+Opción
+de set
+noexec
+verbose
+xtrace
+
+Opción
+de bash
+-n
+-v
+-x
+
+Descripción
+No ejecuta los comandos, sólo comprueba su sintaxis.
+Imprime los comandos antes de ejecutarlos
+Imprime los comandos a interpretar y las distintas
+expansiones que se realizan antes de ejecutarlo
+
+Tabla 9.1: Opciones de Bash para depuración
+
+La opción xtrace nos muestra tanto el comando a ejecutar, como la
+expansión de las sustituciones de parámetros, de las sustituciones de
+comandos, y todas las demás sustituciones que se realizen. Por ejemplo, si
+ejecutamos el comando listafecha del Ejercicio 4.4 con esta opción
+obtenemos:
+$ bash -x lsfecha '9 Aug'
+++ ListaFecha '9 Aug'
+++ ls -lad Makefile aquello lsfecha
+++ grep '9 Aug'
+++ cut -c54+ ls -lad aquello
+-rwxr-xr-x 1 fernando admin
+80 19 Aug 22:16 aquello
+El mencionado script se repite en el Listado 9.1 por claridad.
+function ListaFecha
+{
+ls -lad * | grep "$1" | cut -c54}
+ls -lad $(ListaFecha "$1")
+Listado 9.1: Implementación de lsfecha
+
+Cada símbolo + al principio de una línea indica un nivel de expansión.
+
+Pág 151
+
+

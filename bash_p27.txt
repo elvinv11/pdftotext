@@ -1,0 +1,86 @@
+El shell Bash
+
+MacProgramadores
+
+2. Las teclas de control del terminal
+Las teclas de control del terminal son combinaciones de teclas que interpreta
+el terminal (no Bash).
+Podemos preguntar por las teclas de control del terminal usando el comando:
+$ stty all
+speed 9600 baud; 24 rows; 80 columns;
+lflags: icanon isig iexten echo echoe -echok echoke
+-echonl echoctl -echoprt -altwerase -noflsh
+-tostop -flusho pendin -nokerninfo -extproc
+iflags: -istrip icrnl -inlcr -igncr ixon -ixoff ixany
+imaxbel -ignbrk brkint -inpck -ignpar -parmrk
+oflags: opost onlcr -oxtabs -onocr -onlret
+cflags: cread cs8 -parenb -parodd hupcl -clocal -cstopb
+-crtscts -dsrflow -dtrflow -mdmbuf
+discard dsusp
+eof
+eol
+eol2
+erase
+intr
+^O
+^Y
+^D
+<undef> <undef> ^?
+^C
+kill
+lnext min
+quit
+reprint start
+status
+^U
+^V
+1
+^\
+^R
+^Q
+<undef>
+stop
+susp
+time
+werase
+^S
+^Z
+0
+^W
+El comando, aparte de darnos ciertos flags sobre distintos aspectos del
+comportamiento del terminal, nos muestra las combinaciones de teclas que
+tenemos asignadas a las tareas más frecuentes (recuérdese que ^X significa
+Ctrl+X). Algunas de estas combinaciones de teclas están obsoletas, y no
+merece mucho la pena recordarlas, pero otras, las que se muestran en la
+Tabla 2.2, si que son muy útiles:
+Combinación
+de tecla
+Ctrl+C
+Ctrl+\
+Ctrl+D
+Ctrl+U
+Ctrl+W
+
+Nombre Descripción
+stty
+intr
+Para el comando actual
+quit
+Fuerza la parada del comando actual (usar si
+Ctrl+C no responde)
+eof
+Final del flujo de entrada
+kill
+Borra desde la posición actual al principio de la
+línea
+werase
+Borra desde la posición actual al principio de la
+palabra
+
+Tabla 2.2: Teclas de control del terminal
+
+Para detener un comando es muy típico usar la combinación de teclas Ctrl+C,
+ésta manda un mensaje al programa para que pueda terminar liberando
+Pág 27
+
+

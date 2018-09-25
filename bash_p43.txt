@@ -1,0 +1,77 @@
+El shell Bash
+
+MacProgramadores
+
+Si estamos trabajando con el comando fc (véase apartado 1.1 del Tema 2)
+podría ser útil usar \! que nos va dando el número histórico del comando
+que vamos a ejecutar.
+Opción
+\a
+\A
+\d
+\D {formato}
+\e
+\H
+\h
+\j
+\l
+\n
+\r
+\s
+\t
+\T
+\u
+\v
+\w
+\W
+\#
+\!
+\$
+\nnn
+\\
+\[
+\]
+
+Descripción
+El carácter ASCII bell (007)
+La hora en formato HH:MM
+La fecha en formato semana mes dia
+Nos permite personalizar más la fecha
+El carácter de escape ASCII (033)
+Hostname
+El nombre de la máquina hasta el primer punto
+Número de jobs hijos del shell
+Nombre del terminal en el que estamos trabajando (p.e.
+ttyp2)
+Retorno de carro y nueva línea
+Retorno de carro
+Nombre del shell
+Hora en formato HH:MM:SS con 12 horas
+Hora en el formato anterior pero con 24 horas
+Nombre de usuario
+Versión de Bash
+Ruta del directorio actual
+Nombre del directorio actual (sin ruta)
+Número de comandos ejecutados
+Número histórico del comando
+# si somos root, o $ en caso contrario
+Código de carácter a mostrar en octal
+La barra hacía atrás
+Empieza una secuencia de caracteres no imprimibles, como
+los caracteres de control de secuencias del terminal
+Acaba una secuencia de caracteres no imprimibles
+
+Tabla 3.2: Opciones de personalización del prompt
+
+PS2 es el prompt secundario y por defecto vale >. Se usa cuando escribimos
+un comando inacabado, por ejemplo vimos:
+$ echo En un lugar de la Mancha de cuyo nombre no \
+> quiero acordarme no a mucho tiempo vivía un \
+> hidalgo caballero.
+En un lugar de la Mancha de cuyo nombre no quiero acordar
+no a mucho tiempo vivía un hidalgo caballero.
+Por último, PS3 y PS4 son prompts de programación y depuración que
+estudiaremos en temas posteriores.
+Pág 43
+
+

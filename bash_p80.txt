@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+# Bucles que recorren los argumentos
+for arg in "$*"
+do
+echo "Elemento:$arg"
+done
+for arg in "$@"
+do
+echo "Elemento:$arg"
+done
+Listado 5.2: Bucle for sobre "$*" y "$@"
+
+Si ahora lo ejecutamos obtenemos la siguiente salida:
+$ recibe "El perro" "La casa"
+Elemento:El perro La casa
+Elemento:El perro
+Elemento:La casa
+Vemos que "$*" ha interpretado como un sólo elemento a los dos
+argumentos.
+El delimitador que usa el bucle for para la variable lista es el que
+indiquemos en IFS, y por defecto este delimitador es el espacio, aunque en
+ocasiones (com en el próximo ejercicio) conviene cambiarlo.
+Ejercicio 5.2
+Hacer un script llamado listapath que nos liste todos los ficheros
+ejecutables que haya en los directorios de la variable de entorno PATH.
+Además deberá de avisar si encuentra en PATH un directorio que no exista.
+El Listado 5.3 muestra la solución que proponemos al ejercicio. Es script
+empieza cambiando IFS para que se use el símbolo : como separador de los
+elementos de la lista. El bucle for de esta forma puede recorrer todos los
+elementos de la variable PATH. En cada iteración del bucle principal se
+comprueba que el directorio exista, si es así se llama a la función
+ListaEjecutables(), la cual recibe el nombre de un directorio y lista sus
+ficheros con permiso de ejecución.
+Para obtener los ficheros de un directorio en una lista, la función
+ListaEjecutables() usa la opción -1 del comando ls, que hace que
+cada fichero se escriba en una línea distinta. En este caso además tenemos
+que cambiar el delimitador de elementos (la variable IFS) a un retorno de
+carro.
+Pág 80
+
+

@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+3.3. El preámbulo
+El preámbulo se ejecuta antes que el script original, y configura a este último.
+Su implementación se muestra en el Listado 9.3.
+# Implementacion del preambulo de bashdb
+# Recoge los argumentos
+_modificado=$0
+_libdir=$1
+_original=$2
+shift 2
+# Declara variables necesarias
+declare -a _lineas
+declare -a _lineasbp
+let _trace=0
+# Activa el que SIGDEBUG se produzca dentro de
+# las funciones del script original
+set -o functrace
+# Carga las funciones
+source $_libdir/bashdb.fn
+# Carga en _lineas las lineas del script original
+let _i=0
+while read
+do
+_lineas[$_i]=$REPLY
+let _i=$_i+1
+done < $_original
+# Indica que nada mas empezar ejecute la
+# primera sentencia del script original
+let _steps=1
+# Fija traps
+trap '_finscript' EXIT
+trap '_steptrap $(($LINENO-35))' DEBUG
+Listado 9.3: Implementación del preámbulo en el fichero bashdb.pre
+
+El preámbulo empieza recogiendo los argumentos que recibe del driver y
+aplica un shift de forma que $0 acaba siendo el nombre del script original y
+el resto de los argumentos del script se colocan a partir de $1. Después
+declara los arrays _lineas y _lineasbp donde se guarda respectivamente
+Pág 159
+
+

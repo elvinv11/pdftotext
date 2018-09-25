@@ -1,0 +1,99 @@
+El shell Bash
+
+MacProgramadores
+
+3. Señales
+Una señal es un mensaje que un proceso envía a otro. Normalmente es el
+proceso padre el que envía mensajes a los procesos hijos que crea. Ya hemos
+visto que un proceso se puede comunicar con otro usando un pipeline, las
+señales son otra técnica de comunicación entre procesos. De hecho ambos
+forman parte de lo que en los libros de sistemas operativos se llama técnicas
+de IPC (Inter Process Communication).
+Las señales tienen números (de 1 al número de señales que soporta el
+sistema) y nombres. Podemos obtener una lista de las señales que soporta
+nuestro sistema con el comando kill -l. También puede obtener
+información sobre éstas usando man 7 signal. La Tabla 8.3 muestra un
+resumen de las principales señales que existen. Cuando escribimos scripts
+tenemos que tener en cuenta que los nombres de señales son más portables
+que sus números, con lo que nosotros nos vamos a referir a ellas por nombre.
+Señal
+SIGHUP
+SIGINT
+SIGQUIT
+SIGILL
+SIGABRT
+SIGFPE
+SIGKILL
+SIGSEGV
+SIGPIPE
+SIGALRM
+SIGTERM
+SIGUSR1
+SIGUSR2
+SIGCHLD
+SIGSTOP
+SIGCONT
+SIGTSTP
+SIGTTIN
+SIGTTOU
+SIGTRAP
+SIGURG
+SIGXCPU
+SIGXFSZ
+
+Descripción
+El proceso padre ha terminado
+Interrumpido desde el teclado (con Ctrl-C)
+Cerrado desde el teclado (con Ctrl+\)
+Se ha intentado ejecutar una instrucción ilegal
+Se ha abortado el proceso con la función abort()
+Excepción en punto flotante
+Mata el proceso
+Acceso a una dirección de memoria inválida
+Se ha intentado escribir en un pipe roto
+Temporizador de una alarma puesta con la función
+alarm()
+Señal de terminación
+Señal de usuario
+Señal de usuario
+Un hijo ha parado o terminado
+Parar el proceso
+Continua si está parado
+Proceso parado desde el terminal (con Ctrl+Z)
+El proceso ejecutando en background (sin control del
+terminal) ha intentado leer de la entrada estándar
+El proceso ejecutando en background (sin control del
+terminal) ha intentado escribir en la salida estándar
+Trap de breakpoint
+Datos urgentes en el socket
+Excedido el tiempo de CPU
+Excedido el espacio en disco
+
+Tabla 8.3: Resumen de las principales señales
+Pág 136
+
+Acción
+Term
+Term
+Term
+Core
+Core
+Core
+Term
+Core
+Term
+Term
+Term
+Term
+Term
+Ign
+Stop
+Stop
+Stop
+Stop
+Core
+Ign
+Core
+Core
+
+

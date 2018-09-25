@@ -1,0 +1,23 @@
+El shell Bash
+
+MacProgramadores
+
+Ejercicio 8.2
+Implementar un script llamado mcp que copie el fichero que pasamos como
+primer argumento al resto de argumentos. Es decir, el comando tendrá el
+formato:
+mcp fuente destino1 destino2 ...
+La solución consiste en lanzar varios procesos como corutinas, y esperar a
+que todos acaben con wait, tal como muestra el Listado 8.5.
+fuente=$1
+shift
+for destino in "$@"
+do
+cp $fuente $destino &
+done
+wait
+Listado 8.5: Implementación de mcp
+
+Pág 147
+
+

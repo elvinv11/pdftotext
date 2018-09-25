@@ -1,0 +1,73 @@
+El shell Bash
+
+MacProgramadores
+
+3. Operadores de cadena
+Los operadores de cadena nos permiten manipular cadenas sin necesidad
+de escribir complicadas rutinas de procesamiento de texto. En particular los
+operadores de cadena nos permiten realizar las siguientes operaciones:
+•
+•
+•
+•
+
+Asegurarnos de que una variable existe (que está definida y que no es
+nula).
+Asignar valores por defecto a las variables.
+Tratar errores debidos a que una variable no tiene un valor asignado
+Coger o eliminar partes de la cadena que cumplen un patrón
+
+Vamos a empezar viendo los operadores de sustitución, para luego ver los de
+búsqueda de cadenas.
+
+3.1. Operadores de sustitución
+La Tabla 4.1 muestra los operadores de sustitución.
+Operador
+$ {var:-valor}
+
+1
+
+$ {var:+valor}
+
+1
+
+$ {var:=valor}
+
+1
+
+$ {var:?mensaje}
+
+1
+
+$ {var:offset:longitud}
+
+Descripción
+Si var existe y no es nula retorna su valor,
+sino retorna valor.
+Si var existe y no es nula retorna valor,
+sino retorna una cadena nula.
+Si var existe y no es nula retorna su valor,
+sino asigna valor a variable y retorna
+su valor.
+Si var existe y no es nula retorna su valor,
+sino imprime var:mensaje y aborta el
+script que se esté ejecutando (sólo en
+shells no interactivos). Si omitimos
+mensaje imprime el mensaje por defecto
+parameter null or not set.
+Retorna una subcadena de var que
+empieza en offset y tiene longitud
+caracteres. El primer carácter de var
+empieza en la posición 0. Si se omite
+longitud la subcadena empieza en
+offset y continua hasta el final de var.
+
+Tabla 4.1: Operadores de sustitución
+
+1
+
+Los dos puntos (:) en este operador son opcionales. Si se omiten en vez de comprobar si
+existe y no es nulo, sólo comprueba que exista (aunque sea nulo).
+Pág 56
+
+

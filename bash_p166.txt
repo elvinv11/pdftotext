@@ -1,0 +1,50 @@
+El shell Bash
+
+MacProgramadores
+
+La función _ponbc(), que aparece en el Listado 9.9, es la encargada de
+quitar o poner el breakpoint condicional.
+# Pone o quieta el breakpoint condicional
+function _ponbc
+{
+if [ -n "$*" ]; then
+_condbc="$*"
+_msg "Breakpoint condicional para:\'$*\'"
+else
+_condbc=
+_msg "Breakpoint condicioonal desactivado"
+fi
+}
+Listado 9.9: Implementación de _ponbc()
+
+3.4.5.
+
+Trazar la ejecución
+
+Como vimos en el apartado 1, bash tiene la opción xtrace que se podía fijar
+con el comando set -o xtrace, o desactivar con set +o xtrace. Por
+desgracia, activar esta opción implicaría que se trazase el comportamiento del
+depurador, con lo que lo que vamos a hacer es que dentro de la función
+_steptrap() comprobaremos el valor de una variable flag llamada _trace,
+si esta está activada mostraremos un mensaje de traza. Esto es lo que
+significa la siguiente sentencia que aparece en la función _steptrap() del
+Listado 9.4:
+(( $trace )) && _msg \
+"$PS4:$_lineaactual:${_lineas[_lineaactual]}"
+La función _xtrace(), que se muestra en el Listado 9.10, lo que hace
+simplemente es modificar el valor de este flag.
+# Cambia el valor del flag _trace
+function _xtrace
+{
+let _trace="! $_trace"
+if (( $_trace )); then
+_msg "Activada la traza"
+else
+_msg "Desactivada la traza"
+fi
+}
+Listado 9.10: Implementación de _xtrace()
+
+Pág 166
+
+

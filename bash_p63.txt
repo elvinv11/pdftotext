@@ -1,0 +1,43 @@
+El shell Bash
+
+MacProgramadores
+
+4. Sustitución de comandos
+La sustitución de comandos nos permite usar la salida de un comando
+como si fuera el valor de una variable.
+La sintaxis de la sustitución de comandos es:
+$(comando)
+En el Bourne Shell y el C Shell se utiliza la comilla hacía atrás, o comilla grave,
+es decir `comando` para realizar la sustitución de comandos. Aunque Bash
+mantiene esta sintaxis por compatibilidad hacía atrás, la forma recomendada
+es mediante el uso de paréntesis, que permiten anidar sustituciones de
+comandos.
+Un ejemplo de uso de la sustitución de comandos es $(pwd), que nos
+devuelve el directorio actual, y es equivalente a leer la variable de entorno
+$PWD.
+Otro ejemplo es el uso de $(ls $HOME), esta sustitución de comandos nos
+devuelve una variable con todos los ficheros del directorio home:
+$ midir=$(ls $HOME)
+$ echo $midir
+Desktop Documents Library Movies Music Pictures Public
+Sites autor jdevhome tmp xcode
+También podemos cargar el contenido de un fichero en una variable de
+entorno usando $(<fichero), donde fichero es el fichero a cargar. Por
+ejemplo, para cargar el contenido del fichero copyright.txt en la variable
+de entorno copyright hacemos:
+$ copyright=$(<copyright.txt)
+El comando type -path fichero nos da la ruta donde se encuentra el
+fichero. La opción -path hace que se ignoren keywords, comandos
+internos, etc. Si queremos obtener información detallada del fichero
+bmptoppm podemos usar el comando:
+$ ls -l $(type -path bmptoppm)
+-rwxr-xr-x 1 root admin 8 12 Jan
+
+2004 /sw/bin/bmptoppm
+
+Si tenemos un conjunto de ficheros de la forma tema*.txt podemos usar la
+sustitución de comandos para abrir todos los que traten de Bash así:
+$ emacs $(grep -l 'bash' tema*.txt)
+Pág 63
+
+

@@ -1,0 +1,26 @@
+El shell Bash
+
+MacProgramadores
+
+Tema 6
+Opciones de la
+línea de
+comandos,
+expresiones
+aritméticas
+y arrays
+Sinopsis:
+
+En este momento ya somos capaces de realizar nuestros propios scripts,
+aunque todavía faltan por conocer como se realizan otras tareas comunes de
+programación.
+A lo largo de este tema aprenderemos a realizar dos operaciones frecuentes
+en la programación de scripts: La primera es recibir opciones (precedidas por
+un guión) en la línea de comandos. La segunda es aprender a realizar
+operaciones aritméticas con las variables, de esta forma superaremos la
+limitación que estábamos teniendo, de que todas nuestras variables sólo
+contenían cadenas de caracteres.
+
+Pág 87
+
+

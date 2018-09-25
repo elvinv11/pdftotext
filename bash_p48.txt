@@ -1,0 +1,42 @@
+El shell Bash
+
+MacProgramadores
+
+Aunque no es muy común, a veces conviene cambiar estos ordenes usando
+los comandos internos command, builtin y enable. Esto nos permite tener
+alias y scripts con el mismo nombre y elegir cual de ellos ejecutar. En
+posteriores temas veremos su utilidad.
+Si nos interesa conocer la procedencia de un comando podemos usar el
+comando interno type. Si le damos un comando nos indica cual es su fuente,
+si le damos varios nos indica la fuente de cada no de ellos. Por ejemplo:
+$ type ls
+ls is /bin/ls
+$ type ls ll
+ls is /bin/ls
+ll is aliased to `ls -laF'
+Si tenemos un script, una función y un alias llamados hazlo, type nos dirá
+que está usando hazlo como alias, ya que los alias tienen preferencia sobre
+el resto de símbolos:
+$ type hazlo
+hazlo is aliased to `rm *'
+type también tiene opciones que nos permiten obtener detalles de un
+símbolo. Si queremos conocer todas las definiciones de un símbolo podemos
+usar type -a. Por ejemplo:
+$ type -a hazlo
+hazlo is aliased to `rm *'
+hazlo is a function
+hazlo ()
+{
+rm *
+}
+hazlo is ./hazlo
+Podemos conocer el tipo de un símbolo con la opción -t: Nos devolverá
+alias, keyword, function, builtin o file. Por ejemplo:
+$ type -t cd
+builtin
+$ type -t cp
+file
+
+Pág 48
+
+

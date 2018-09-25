@@ -1,0 +1,48 @@
+El shell Bash
+
+MacProgramadores
+
+hacer una copia temporal del fichero, y luego pasárselo a los comandos
+pnmscale y pnmmargin:
+# Aplica las opciones
+if [ $escala ]; then
+cp $fichero_ppm aux.$fichero_ppm
+pnmscale $escala aux.$fichero_ppm > $fichero_ppm
+rm aux.$fichero_ppm
+fi
+if [ $grosorborde ]; then
+cp $fichero_ppm aux.$fichero_ppm
+pnmmargin $grosorborde aux.$fichero_ppm > $fichero_ppm
+rm aux.$fichero_ppm
+fi
+Esta forma de hacer el script implicaría que si en mitad de la ejecución fallase
+el script (o fuera interrumpido con Ctrl+C), los ficheros temporales quedarían
+sin borrar.
+Vamos a modificar esto para que los ficheros se creen en el directorio
+temporal, y para que les asignemos un nombre único, que incluya el ID de
+proceso de nuestro script.
+El script quedaría ahora de la siguiente forma:
+# Aplica las opciones
+if [ $escala ]; then
+cp $fichero_ppm /tmp/${$}$fichero_ppm
+pnmscale $escala /tmp/${$}$fichero_ppm > $fichero_ppm
+rm /tmp/${$}$fichero_ppm
+fi
+if [ $grosorborde ]; then
+cp $fichero_ppm /tmp/${$}$fichero_ppm
+pnmmargin $grosorborde /tmp/${$}$fichero_ppm > \
+$fichero_ppm
+rm /tmp/${$}$fichero_ppm
+fi
+
+4.4. Ignorar señales
+Si lo que queremos es ignorar una señal, simplemente tenemos que pasar
+una cadena vacía ("" ó '') en el argumento cmd de trap.
+El ejemplo clásico de señal que muchas veces se quiere ignorar es la señal
+SIGHUP (hangup), la cual recibe un proceso cuando su padre termina (p.e. el
+shell) y produce que el proceso hijo también termine. Por ejemplo, podemos
+hacer la siguiente función que lanza un comando de forma que éste no
+termina al terminar el shell:
+Pág 142
+
+

@@ -1,0 +1,45 @@
+El shell Bash
+
+MacProgramadores
+
+donde='En el script'
+echo $donde
+EstasAqui
+echo $donde
+Listado 4.5: Ejemplo de variable local y global con el mismo nombre
+
+Al ejecutarlo obtenemos:
+$ dondeestoy
+En el script
+En el script
+Por último comentar que las variables globales también se pueden definir
+dentro de una función. Por ejemplo, en el Listado 4.6 se muestra como
+definimos la variable global quiensoy dentro de la función EstasAqui() y
+la usamos más tarde desde el script.
+# Ejemplo de variable global
+function EstasAqui
+{
+local donde='Dentro de la funcion'
+quiensoy=Fernando
+}
+donde='En el script'
+echo $donde
+EstasAqui
+echo $donde
+echo "Soy $quiensoy"
+Listado 4.6: Ejemplo de variable global definida dentro de una función
+
+Al ejecutar el script del Listado 4.6 obtenemos:
+$ dondeestoy
+En el script
+En el script
+Soy Fernando
+
+2.3. Las variables $*, $@ y $#
+La variable $# almacena el número de argumentos o parámetros recibidos
+por el script o la función. El valor es de tipo cadena de caracteres, pero más
+adelante veremos como podemos convertir este valor a número para operar
+con él.
+Pág 52
+
+

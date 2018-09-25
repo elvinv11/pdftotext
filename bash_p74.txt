@@ -1,0 +1,62 @@
+El shell Bash
+
+1.5.1.
+
+MacProgramadores
+
+Comparación de cadenas
+
+Los operadores de comparación de cadenas se resumen en la Tabla 5.1. Las
+comparaciones que realizan < y > son lexicográficas, es decir comparaciones
+de diccionario, donde por ejemplo q es mayor que perro. Obsérvese que no
+existen operadores <= y >= ya que se pueden implementar mediante
+operaciones lógicas.
+Operador
+str1 = str2
+str1 != str2
+str1 < str2
+str1 > str2
+-n str1
+-z str1
+
+1
+
+Verdadero si ...
+Las cadenas son iguales
+Las cadenas son distintas
+str1 es menor lexicográficamente a str2
+str1 es mayor lexicográficamente a str2
+str1 es no nula y tiene longitud mayor a cero
+str1 es nula (tiene longitud cero)
+
+Tabla 5.1: Operadores de comparación de cadenas
+
+Usando operadores de comparación de cadenas podemos mejorar la función
+volver() del Ejercicio 4.5 del Tema 4 para que si la variable de entorno
+PILADIR, donde guardábamos la pila de directorios, está vacía no intente
+cambiar de directorio e informe del problema:
+function volver
+{
+if [ -n "$PILADIR" ]; then
+PILADIR=${PILADIR#* }
+cd ${PILADIR%% *}
+echo $PILADIR
+else
+echo "La pila esta vacia, no se cambio de directorio"
+fi
+}
+Hemos puesto "$PILADIR" entre comillas para que cuando se expanda se
+expanda por una sola cadena, y no tantas como directorios haya. Hay otra
+razón para ponerla entre comillas que se manifestará luego, y es que si
+PILADIR está vacía se expandirá por [ -n ] produciendo error. Con las
+comillas se expandirá por [ -n "" ] que es lo que queremos.
+Otro ejemplo que podemos mejorar es el del Ejercicio 4.1 del Tema 4.
+Recuérdese que en el Listado 4.9 habíamos contemplado el caso de que no se
+suministrara el nombre de fichero de clientes como argumento:
+
+1
+
+Obsérvese que sólo hay un símbolo =, lo cual confunde a veces a los programadores C.
+Pág 74
+
+

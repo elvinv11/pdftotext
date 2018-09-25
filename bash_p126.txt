@@ -1,0 +1,39 @@
+El shell Bash
+
+MacProgramadores
+
+5. El comando interno eval
+El comando eval nos permite pasar el valor de una variable al interprete de
+comandos para que lo ejecute. Por ejemplo:
+$ eval "ls"
+Hace que el interprete de comandos ejecute ls.
+Aunque en principio puede parecer un poco extraño, el comando eval
+resulta muy potente ya que el programa puede construir programas en
+tiempo de ejecución y luego ejecutarlos. Estrictamente hablando no
+necesitaríamos disponer del comando eval para hacer esto con Bash, ya que
+siempre podemos crear un fichero con los comandos a ejecutar y luego
+ejecutarlo usando source. Pero eval nos evita el tedio de tener que crear
+un fichero.
+La cadena que pasemos a eval puede contener variables, lo cual aumenta su
+flexibilidad. Por ejemplo:
+$ fich=resultado.txt
+$ eval "ls -la > $fich"
+El comando que pasa eval a Bash sería ls -la > resultado.txt.
+El argumento de eval también se podría haber pasado entre comillas
+fuertes, pero en este caso Bash recibiría el comando ls -la $fich, el cual
+produce el mismo resultado, ya que Bash expande $fich antes de ejecutar
+el comando.
+El formato general de eval es:
+eval arg1 arg2 ...
+Con lo que también podríamos hacer omitido las comillas, y el comando
+hubiera funcionado igual de bien. Aunque ahora cada palabra del comando
+hubiera sido considerada un argumento, y eval hubiera tenido que
+reconstruir los argumentos. En general se recomienda entrecomillar el
+argumento.
+Ejercicio 7.1
+Hacer un script llamado fondo que ejecute un comando (que recibe como
+argumento) en background y que redirija tanto su salida estándar como su
+salida de errores estándar a un fichero llamado resultado.log
+Pág 126
+
+

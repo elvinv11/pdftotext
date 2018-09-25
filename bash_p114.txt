@@ -1,0 +1,22 @@
+El shell Bash
+
+MacProgramadores
+
+Dejamos como ejercicio al lector el que el comando no muestre en consola la
+evolución del proceso, sino que sólamente diga si ha tenido éxito o no.
+Una variante de los here document son los here string, los cuales se llevan a
+cabo usando el operador <<<texto, y que simplemente envían texto a la
+entrada estándar del comando.
+Por ejemplo, si queremos añadir una línea al principio del fichero esto.txt y
+guardarlo en estonuevo.txt podemos usar el comando:
+$ titulo="Mi titulo de ejemplo"
+$ cat - esto.txt <<<$titulo > estonuevo.txt
+El guión como argumento de cat (al igual que en otros comandos como
+grep o sort) indica que ahí va lo que reciba por la entrada estándar (el here
+string en nuestro ejemplo). Obsérvese que el here string (al igual que el here
+document) puede contener variables, en cuyo caso las expanden por su valor
+antes de pasar el here document al comando.
+
+Pág 114
+
+

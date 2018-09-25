@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+El Listado 6.3 muestra la solución propuesta. Obsérvese que al ser una
+expresión aritmética en la condición del if se usa == y no =. La expresión
+intentos-->0 primero comprueba que intentos sea mayor a 0, y luego
+le aplica el operador -- que decrementa en uno intentos.
+En el apartado 2 del Tema 5 vimos que el bucle for permitía recorrer los
+elementos de una lista. Existe otro tipo de bucle que se asemeja más a los
+bucles de C que es el bucle for aritmético. Este tiene la sintaxis:
+for (( inicialización ; condición ; actualizacion ))
+do
+cuerpo
+done
+En este caso los espacios en ((inicialización;condición;
+actualizacion)) no son necesarios. La Figura 6.1 muestra el flujo de
+control de este bucle, que es similar al de C.
+actualización
+
+inicialización
+
+condición
+
+Sí
+
+cuerpo
+
+No
+
+Fin
+Figura 6.1: Diagrama de flujo del bucle for
+
+Ejercicio 6.5
+Escribir un script llamado tablamultiplicar que pida un número e
+imprima su tabla de multiplicar. Para pedir el número puede usar la sentencia
+read variable que pide un valor por teclado y lo mete en variable. El
+Listado 6.4 muestra la solución propuesta.
+En los bucles for aritméticos no es necesario utilizar expresiones aritméticas
+en la inicialización, condición y actualización, pero sí en el cuerpo.
+
+Pág 100
+
+

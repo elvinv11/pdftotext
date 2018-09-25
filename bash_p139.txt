@@ -1,0 +1,42 @@
+El shell Bash
+
+MacProgramadores
+
+4. Capturar señales desde un script
+4.1. El comando interno trap
+Hemos comentado que los programas C pueden capturar señales y actuar en
+consecuencia. Los scripts Bash no son menos y también tienen su mecanismo
+de captura de señales usando el comando interno trap, el cual tiene el
+siguiente formato:
+trap cmd sig1 sig2 ...
+cmd es el comando que queremos ejecutar al capturar alguna de las señales
+sig1 sig2 ... Lógicamente cmd puede ser una función o un script, y las
+señales se pueden dar por número o por nombre. El comando trap también
+se puede ejecutar sin argumentos, en cuyo caso nos da la lista de traps que
+están fijados.
+El Listado 8.1 muestra un script sencillo que captura la señal SIGINT
+(producida por Ctrl+C), e imprime un mensaje indicando que ha capturado la
+señal.
+trap "echo 'Pulsaste Ctrl+C!'" INT
+while true
+do
+sleep 60;
+echo "Cambio de minuto"
+done
+Listado 8.1: Script que captura la SIGINT
+
+Ahora al ejecutarlo y pulsar Ctrl+C obtenemos:
+$ capturasenal
+^CPulsaste Ctrl+C!
+Cambio de minuto
+^CPulsaste Ctrl+C!
+Cambio de minuto
+Obsérvese que al recibir la señal SIGINT Bash se la pasa al comando sleep,
+con lo que éste acaba, pero luego se ejecuta el trap del script, y por esta
+razón el script no acaba.
+Para pararlo ahora con Ctrl+C tenemos un problema ya que hemos cambiado
+la opción por defecto, que es Term, por imprimir un mensaje. Para terminar
+
+Pág 139
+
+

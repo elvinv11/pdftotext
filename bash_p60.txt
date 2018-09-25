@@ -1,0 +1,59 @@
+El shell Bash
+
+MacProgramadores
+
+ruta=/usr/local/share/qemu/bios.core.bin
+Y ejecutamos los siguientes operadores de búsqueda de patrones, entonces
+los resultados serían los siguientes:
+Operador
+${ruta##/*/}
+${ruta#/*/}
+ruta
+${ruta%.*}
+${ruta%%.*}
+
+Resultado
+bios.core.bin
+local/share/qemu/bios.core.bin
+/usr/local/share/qemu/bios.core.bin
+/usr/local/share/qemu/bios.core
+/usr/local/share/qemu/bios
+
+En la búsqueda de patrones se pueden usar tanto los comodines tradicionales
+que vimos en el apartado 2 del Tema 1, como los comodines extendidos que
+vimos en el apartado 2.4 de ese mismo tema.
+Operador
+${var#patron}
+
+Descripción
+Si patron coincide con la primera parte del
+valor de var, borra la parte más pequeña que
+coincide y retorna el resto.
+${var##patron}
+Si patron coincide con la primera parte del
+valor de var, borra la parte más grande que
+coincide y retorna el resto.
+${var%patron}
+Si patron coincide con el final del valor de
+var, borra la parte más pequeña que coincide
+y retorna el resto.
+${var%%patron}
+Si patron coincide con el final del valor de
+var, borra la parte más grande que coincide y
+retorna el resto.
+${var/patron/cadena} La parte más grande de patron que coincide
+${var//patron/cadena} en var es reemplazada por cadena. La
+primera forma sólo reemplaza la primera
+ocurrencia, y la segunda forma reemplaza
+todas las ocurrencias. Si patron empieza por
+# debe producirse la coincidencia al principio
+de var, y si empieza por % debe producirse la
+coincidencia al final de var. Si cadena es nula
+se borran las ocurrencias. En ningún caso var
+se modifica, sólo se retorna su valor con
+modificaciones.
+Tabla 4.2: Operadores de búsqueda de patrones
+
+Pág 60
+
+

@@ -1,0 +1,49 @@
+El shell Bash
+
+MacProgramadores
+
+Para poder borrar breakpoint hemos hecho la función _borrabp() que se
+muestra en el Listado 9.7. Su funcionamiento es parecido al de _ponbp().
+La otra función relacionada con breakpoint de número de línea es
+_tienebp(), la cual nos dice su hay un breakpoint en la línea pasada como
+argumento. Esta función es llamada por _steptrap() cada vez que se
+ejecuta con el fin de comprobar si en esa línea hay un breakpoint. Su
+implementación se muestra en el Listado 9.8.
+# Comprueba si la linea tiene breakpoint
+function _tienebp
+{
+local i
+if [ "$_lineasbp" ]; then
+for (( i=0 ; i<${#_lineasbp[@]} ; i++ ))
+do
+if (( ${_lineasbp[$i]} == $1 )); then
+return 0
+fi
+done
+fi
+return 1
+}
+Listado 9.8: Implementación de _tienebp()
+
+3.4.4.
+
+Los breakpoints condicionales
+
+Nuestro depurador proporciona otro método de detener el script original:
+Usar un breakpoint condicional, que es una cadena especificada por el
+usuario que se evalúa como un comando (usando eval). Si la condición se
+cumple (el código de terminación es 0), el depurador se para (se ejecuta
+_cmdprompt()).
+Esto nos permite, por ejemplo ver cuando una variable alcanza un valor (p.e.
+(($x<0))), o cuando se ha escrito un determinado texto a fichero (grep
+texto fichero).
+Para fijar esta condición usamos el comando bc cadena. Para eliminarla
+usamos bc sin argumentos, esto instala la cadena vacía que es ignorada ya
+que _steptrap() evalúa esta cadena sólo si no es nula. Esto es lo que
+significa en el Listado 9.4:
+elif [ -n "$_condbc" ] && eval $_condbc; then
+_msg "Se cumplio $_condbc en la linea $_lineaactual"
+_cmdprompt
+Pág 165
+
+

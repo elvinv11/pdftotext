@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+Para ello podemos usar la variable especial ?, cuyo valor es $?, y que indica
+el código de terminación del último comando ejecutado por el shell. Por
+ejemplo:
+$ cd direrroneo
+-bash: cd: direrroneo: No such file or directory
+$ echo $?
+1
+Al haber fallado el último comando $? vale 1. Sin embargo, si el comando se
+ejecuta bien $? valdrá 0:
+$ cd direxistente
+$ echo $?
+0
+La variable ? debe ser leída junto después de ejecutar el comando, luego es
+muy típico guardar su valor en una variable ct=$? para su posterior uso.
+El otro elemento que necesitamos para devolver el código de terminación de
+una función es la sentencia return [ct], la cual hace que abandonemos la
+función devolviendo el código de terminación que pasemos en ct. El
+parámetro ct es opcional y se puede omitir, en cuyo caso se devuelve el
+valor de la variable ? en el momento de ejecutarse return, es decir, el
+código de terminación del último comando ejecutado. Si la función termina sin
+la sentencia return (como ha pasado hasta ahora), la función también
+devuelve el código de terminación de la última sentencia ejecutada.
+return puede ser usada sólo dentro de funciones y scripts ejecutados con
+source. Por contra, la sentencia exit [ct] puede ser ejecutada en
+cualquier sitio, y lo que hace es abandonar el script (aunque se ejecute
+dentro de una función). La sentencia exit suele usarse para detectar
+situaciones erróneas que hacen que el programa deba detenerse, aunque a
+veces se utiliza para "cerrar" un programa.
+Ejercicio 5.1
+Hacer una función llamada cd() que sustituya al comando interno cd de
+forma que al ejecutar cd, además de cambiar de directorio, se de un mensaje
+que indique el antiguo y nuevo directorio.
+En principio podríamos hacer la función:
+cd()
+{
+builtin cd "$@"
+echo "$OLDPWD -> $PWD"
+Pág 71
+
+

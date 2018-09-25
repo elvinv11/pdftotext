@@ -1,0 +1,42 @@
+El shell Bash
+
+MacProgramadores
+
+1. Scripts y funciones
+1.1. Scripts
+Un script es un fichero que contiene comandos Bash ejecutables. Los
+ficheros de configuración de Bash como .bash_profile o .bashrc, vistos
+en el apartado 1 del Tema 3, son ejemplos de scripts.
+Para crear un script use su editor de texto favorito, y guardelo en un fichero.
+Una vez creado el script existen dos formas de ejecutarlo:
+La primera consiste en ejecutarlo con el comando source fichero, el cual
+carga el fichero en la memoria de Bash y lo ejecuta.
+La segunda forma implica poner al fichero permiso de ejecución (con el
+comando chmod +x fichero). Una vez puesto este permiso, podremos
+ejecutarlo siempre que esté en alguno de los directorios indicados en la
+variable de entorno PATH. De hecho muchos comandos comunes (p.e. spell
+o man) están implementados como scripts Bash, y no como programas C
+ejecutables. Es muy típico en este caso empezar el script poniendo en la
+primera línea #! /bin/bash, de esta forma indicamos que el script se debe
+ejecutar con Bash, a pesar de que Bash no fuera el shell por defecto. Otros
+scripts para otros lenguajes como awk, ksh o perl también se escriben
+empezando la primera línea por el path del shell a utilizar.
+Hay otra diferencia entre estas dos formas de ejecutarlo: Cuando ejecutamos
+un script con source, éste se ejecuta dentro del proceso del shell, mientras
+que si lo ejecutamos como un fichero ejecutable se ejecuta en un subshell.
+Esto implica que sólo las variables de entorno exportadas son conocidas por
+el nuevo subshell que ejecuta el programa.
+De hecho, cada vez que un script llama a un comando también se ejecuta en
+un proceso aparte, excepto con los comandos internos que se ejecutan
+dentro del proceso del script, lo cual les hace más rápidos y les permite
+acceder a las variables de entorno no exportadas.
+
+1.2. Funciones
+Las funciones de Bash son una extensión de las funciones que existen desde
+el Bourne Shell.
+Éstas, a diferencia de los scripts, se ejecutan dentro de la memoria del propio
+proceso de Bash, con lo que son más eficientes que ejecutar scripts aparte,
+pero tienen el inconveniente de que tienen que estar siempre cargadas en la
+Pág 46
+
+

@@ -1,0 +1,57 @@
+El shell Bash
+
+MacProgramadores
+
+3. Los bucles while y until
+Los bucles while y until serán más útiles cuando los combinemos con
+características que veremos en el próximo tema, como la aritmética con
+enteros, la entrada y salida de variables, y el procesamiento de opciones de la
+línea de comandos. Aun así veremos en este apartado algunos ejemplos útiles
+de su utilización. Su sintaxis es:
+while comando
+do
+·····
+done
+
+until comando
+do
+·····
+done
+
+En este caso el comando también puede ser una condición encerrada entre
+[]. La única diferencia entre while y until es que while se ejecuta
+mientras que el código de terminación del comando sea exitoso, es decir 0,
+mientras que until se ejecuta hasta que el código de terminación sea
+exitoso, según esto until se puede interpretar como ejecutar varias veces
+un comando hasta que tenga exito.
+Ejercicio 5.3
+Volver a hacer un script que muestre los directorios de PATH, tal como
+hicimos en el Ejercicio 4.3, pero usando ahora un bucle while y
+aprovechando el hecho de que una cadena en un test de condición evalúa por
+verdadero cuando no está vacía, y por falso cuando está vacía.
+# Script que muestra los directorios de PATH
+path=$PATH
+while [ $path ]; do
+echo ${path%%:*}
+if [ ${path#*:} = $path ]; then
+path=
+else
+path=${path#*:}
+fi
+done
+Listado 5.4: Script que lista los directorios de PATH
+
+El Listado 5.4 muestra
+${path#*:} = $path ]
+sin dos puntos pongamos
+operador de búsqueda de
+símbolo dos puntos (:).
+
+la solución propuesta. La comprobación [
+se hace para que cuando quede un sólo directorio
+la variable path a vacía, ya que el patrón del
+patrones no se cumple si la cadena no tiene el
+
+Pág 82
+
+

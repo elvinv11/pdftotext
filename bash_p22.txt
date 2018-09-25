@@ -1,0 +1,42 @@
+El shell Bash
+
+MacProgramadores
+
+Donde hemos puesto el carácter de escape a los caracteres especiales para
+que Bash no los interprete.
+También este carácter se usa para poder poner espacios a los nombres de
+ficheros, ya que el espacio es interpretado por Bash como un separador de
+argumentos de la línea de comandos, si queremos que no considere el
+espacio como un cambio de argumento podemos preceder el espacio por \.
+Por ejemplo el fichero Una historia.avi lo reproduzco en mi ordenador
+con mplayer así:
+$ mplayer Una\ historia.avi
+Si queremos que Bash no interprete el carácter de escape podemos
+entrecomillarlo '\', o bien hacer que él se preceda a si mismo \\.
+
+6.3. Entrecomillar los entrecomillados
+Podemos usar el carácter de escape para que no se interpreten los
+entrecomillados simples o dobles, es decir:
+$ echo \"2\*3\>5\" es una expresion cierta
+"2*3>5" es una expresion cierta
+$ echo \'2\*3\>5\' es una expresion cierta
+'2*3>5' es una expresion cierta
+
+6.4. Texto de varias líneas
+Otro problema es como escribir un comando que ocupa varias líneas. Bash
+nos permite utilizar el carácter de escape para ignorar los retornos de carro
+de la siguiente forma:
+$ echo En un lugar de la Mancha de cuyo nombre no \
+> quiero acordarme no a mucho tiempo vivía un \
+> hidalgo caballero.
+En un lugar de la Mancha de cuyo nombre no quiero acordar
+no a mucho tiempo vivía un hidalgo caballero.
+Al pulsar intro Bash nos devuelve el segundo prompt, que por defecto es >, y
+nos permite seguir escribiendo.
+Una segunda opción es entrecomillar y no cerrar las comillas, con lo que Bash
+nos pide que sigamos escribiendo sin necesidad de poner un carácter de
+escape a los retornos de carro:
+$ echo 'En un lugar de la Mancha de cuyo nombre no
+Pág 22
+
+

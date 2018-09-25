@@ -1,0 +1,48 @@
+El shell Bash
+
+MacProgramadores
+
+3. Un depurador Bash
+En este apartado construiremos un pequeño depurador de scripts Bash. Para
+ello usaremos los conceptos que hemos aprendido en los apartados
+anteriores.
+La mayoría de los depuradores tienen numerosas características que ayudan
+al programador a seguir paso a paso la ejecución de un programa. Entre ellas
+está el poder ejecutar y parar el programa en determinados puntos, llamados
+breakpoints, así como el poder examinar y cambiar el valor de las variables.
+Nuestro pequeño depurador va a disponer de las siguientes características:
+•
+•
+•
+•
+
+Posibilidad de especificar breakpoints, tanto por número de línea como
+por condición booleana a cumplirse.
+Posibilidad de ejecutar el programa paso a paso, que es lo que se
+llama el stepping.
+Posibilidad de leer y cambiar el valor de las variables del script
+depurado
+Posibilidad de imprimir el programa con indicadores de donde se
+encuentran los breakpoints, y donde se encuentra detenido el
+programa.
+
+3.1. Estructura del depurador
+El depurador que vamos a hacer, que llamaremos bashdb, es un depurador
+que recibe como argumento un script a depurar, que llamaremos script
+original, y lo almacena en otro script, al que llamaremos script
+modificado, al cual le hemos añadido cierta funcionalidad que nos va a
+ayudar a ejecutar el script original paso a paso. Este proceso será
+transparente al usuario, de forma que él sólo será consciente de la existencia
+del script original.
+El depurador constará de tres módulos: El driver (fichero bashdb), el
+preámbulo (fichero bashdb.pre) y las funciones del depurador (fichero
+bashdb.fn). Vamos a comentar cada uno de estos módulos con más detalle
+en los próximos subapartados.
+
+3.2. El driver
+El driver es el encargado de configurar el entorno y coordinar el
+comportamiento de los demás módulos para depurar el script.
+
+Pág 157
+
+

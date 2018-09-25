@@ -1,0 +1,59 @@
+El shell Bash
+
+MacProgramadores
+
+3. Las opciones de Bash
+Las opciones del shell es una forma de poder modificar el comportamiento de
+éste.
+Para fijar estas opciones usamos el comando shopt (shell option). Si
+ejecutamos este comando sin argumentos obtendremos un listado de todas
+las opciones del shell y su valor actual.
+Todas estas variables son booleanas y tienen valor de on/off. Podemos
+activar estas opciones con shopt -s opcion y desactivarlas con shopt u opcion.
+La Tabla 3.1 muestra las principales opciones de shopt junto con una
+descripción de su propósito.
+Opción
+cdable_vars
+
+Descripción
+Permite que cd use los valores de las variables
+como nombres de directorios.
+cdspell
+Ignora pequeños errores en los cambios de
+directorio con cd. Sólo en la ejecución
+interactiva.
+cmdhist
+Guarda los comandos que hemos escrito en
+varias líneas en una sola línea del historial.
+dotglob
+Incluye en la expansión de comodines los
+ficheros que empiezan por punto (.).
+expand_aliases
+Expande un alias cuando lo ejecuta.
+extglob
+Utiliza extensiones de los comodines. Véase
+apartado 2.4 del Tema 1. El término "glob"
+también se usa a veces para referirse a los
+comodines.
+failglob
+Si falla la expansión de un comodín porque no
+encuentra nada falla el comando (como hace el
+C Shell).
+force_fignore
+Los sufijos especificados en la variable de
+entorno FIGNORE no se usan para completar
+palabras con tabulador.
+hostcomplete
+Se intenta completar nombres de host al pulsar
+tabulador cuando la palabra contiene una @.
+interactive_comments Permite que dentro de un comando de sesión
+interactiva haya comentarios (precedidos por #)
+login_shell
+Variable de sólo lectura que indica si Bash ha
+sido lanzado como un shell de login
+nocaseglob
+Indica si los comodines expanden sin
+sensibilidad a mayúsculas/minúsculas. No
+confundir con la variable completionPág 39
+
+

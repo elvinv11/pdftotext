@@ -1,0 +1,49 @@
+El shell Bash
+
+MacProgramadores
+
+# Driver del depurador
+# Comprueba argumentos
+if (( $#<1 )); then
+echo "Use: bashdb <script>" >&2
+exit 1
+fi
+_original=$1
+if [ ! -r $_original ]; then
+echo "No se puede leer el fichero $_original" &>2
+exit 1
+fi
+# Convierte a $1 en $0 y pone en su sitio los
+# argumentos del script original
+shift
+# Crea el fichero modificado
+_tmpdir=/tmp
+_libdir=.
+_modificado=$_tmpdir/bashdb.$$
+cat $_libdir/bashdb.pre $_original > $_modificado
+# Y lo ejecuta
+exec bash $_modificado $_libdir $_original "$@"
+Listado 9.2: Implementación del driver del depurador bashdb
+
+El Listado 9.2 muestra su implementación. bashdb recibe como primer
+argumento el nombre del script a ejecutar, y el resto de argumentos son los
+argumentos del script.
+Si bashdb pasa los test iniciales, construye un fichero temporal en el que
+guarda el script modificado, el cual consta del preámbulo y el script original.
+La variable _libdir indica el directorio donde están situados los ficheros del
+depurador. En principio está fijada al directorio actual, pero, una vez acabado
+el programa que estamos haciendo, podemos cambiar estos ficheros a otro
+sitio (p.e. /usr/local/lib).
+En el apartado 1.2 del Tema 7 vimos como se usaba el comando exec para
+modificar la entrada/salida de todos los comandos posteriores. El comando
+exec también se puede usar para reemplazar el script actual que está
+ejecutando Bash por otro que le pasamos como argumento ($_modificado
+en nuestro caso). Esto nos evita crear un subproceso aparte y ejecutar el
+script modificado en nuestro propio proceso. El script recibe dos argumentos:
+El directorio de librerías ($_libdir), y el nombre del fichero original
+($_original). Obsérvese que todas las variables del depurador las hemos
+precedido por guión bajo para reducir conflictos con variables del script
+original.
+Pág 158
+
+

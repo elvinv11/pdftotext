@@ -1,0 +1,63 @@
+El shell Bash
+
+MacProgramadores
+
+listar (los de la fecha que nos interese). Para ello podemos usar una
+sustitución de comando que ejecute la función ListaFecha con el
+argumento que recibe el script. Obsérvese que "$1" aparece entrecomillado,
+esto es necesario porque sino la fecha (p.e. 3 Aug), al tener un espacio,
+hace que pasemos dos parámetros a ListaFecha (3 en $1, y Aug en $2).
+Ejercicio 4.5
+Para acabar el tema vamos a realizar un ejercicio más completo que usa todo
+lo aprendido hasta ahora, y que vamos a continuar en el Tema 5 y Tema 6
+con los nuevos conceptos de programación que veamos.
+Bash dispone de los comandos internos pushd y popd que nos permiten
+movernos por los directorios de la siguiente forma: Al ejecutar pushd
+directorio nos movemos a ese directorio (como con cd) y el directorio
+anterior se guarda en una pila de forma que la hacer un popd regresamos al
+directorio que está en la cima de la pila. El comando dirs nos permite ver la
+pila de directorios que tenemos en cada momento. En parte, estos comandos
+son parecidos a el comando cd -, que nos lleva al anterior directorio en el
+que estábamos (al guardado en la variable de entorno OLDPWD), sólo que
+pushd y popd nos permiten almacenar cualquier número de directorios en la
+pila.
+Nosotros en este ejercicio vamos a hacer los comandos ira directorio y
+volver que serían equivalentes a pushd y popd. Para almacenar la pila de
+directorios vamos a usar la variable de entorno PILADIR en la que
+almacenaremos los directorios separados por un espacio. Aunque en principio
+el espacio puede formar parte del nombre de un directorio, hasta que no
+avancemos más, y veamos los arrays en el Tema 6, vamos a utilizar esta
+forma de guardar la pila de directorios.
+A continuación se muestra un ejemplo de ejecución de estos comandos:
+Comando
+ira /usr
+ira /Volumen
+ira /tmp
+volver
+volver
+volver
+
+PILADIR
+/usr /Users/fernando
+/Volumen /usr /Users/fernando
+/tmp /Volumen /usr /Users/fernando
+/Volumen /usr /Users/fernando
+/usr /Users/fernando
+/Users/fernando
+
+Directorio
+resultante
+/usr
+/Volumen
+/tmp
+/Volumen
+/usr
+~
+
+La forma de funcionar es la siguiente:
+1. La primera vez que se ejecuta ira() (cuando PILADIR está vacía) se
+guarda el directorio actual en PILADIR, se hace un cd al directorio
+indicado, y se guarda el nuevo directorio en PILADIR.
+Pág 65
+
+

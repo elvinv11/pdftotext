@@ -1,0 +1,31 @@
+El shell Bash
+
+MacProgramadores
+
+$ fink list bash
+Information about 4975 packages read in 12 seconds.
+bash
+3.0-2
+The GNU Bourne Again Shell
+bash-completion 20041017-1 Command-line completions ...
+bash-doc
+3.0-1
+Extra documentation for ...
+$ fink install bash
+Y cambiar a este shell con:
+$ chsh -s /sw/bin/bash
+Pero antes deberá introducir este shell en /etc/shells, o chsh no se lo
+aceptará como un shell válido.
+Si ahora nos logamos de nuevo con el comando login y preguntamos por la
+versión de Bash:
+$ echo $BASH
+/sw/bin/bash
+$ echo $BASH_VERSION
+3.00.0(1)-release
+Vemos que estamos trabajando con Bash 3.0. En este tutorial supondremos
+que tenemos la versión 3.0 de Bash, si alguien está usando la versión 2.05, o
+alguna anterior, puede que no le funcionen todos los ejemplos que hagamos.
+
+Pág 9
+
+

@@ -1,0 +1,56 @@
+El shell Bash
+
+MacProgramadores
+
+Por defecto kill envía la señal SIGTERM al proceso, la cual causa que esté
+termine limpiamente, al igual que pasa con la señal SIGINT producida por
+Ctrl+C. Podemos indicar que kill envíe una señal distinta al proceso
+precediendo el nombre o el número de la señal por un guión.
+Por ejemplo si el proceso esto tiene el número de job 1, podemos enviarle la
+señal SIGTERM usando kill %11. Si tiene éxito veremos un mensaje de la
+forma:
+[1]
+
+766 Terminated
+
+esto
+
+Sino podemos enviarle la señal SIGQUIT usando kill -QUIT %12. Si
+tenemos éxito recibimos el mensaje:
+[1]
+
+766 Exited
+
+131
+
+esto
+
+Donde 131 es el código de terminación del proceso.
+Si aun así no responde, el último recurso es enviar la señal SIGKILL, con
+kill -KILL %13, que es una señal que los procesos no pueden capturar,
+con lo que no le queda más remedio que ser matado por el sistema operativo.
+Ejercicio 8.1
+Hacer un script llamado killalljobs que envíe la señal pasada como
+argumento a todos los procesos en background.
+Usando el comando jobs -p, que vimos antes, podemos hacerlo en una sola
+línea así:
+kill "$@" $(jobs -p)
+Existe un comando llamado killall patron que nos permite enviar la
+señal SIGTERM (o otra si se la indicamos como opción) a todos los procesos
+que tengan a patron en su nombre. Realmente este comando es equivalente
+a kill, excepto porque no hay que preceder el nombre de proceso por %.
+
+1
+
+Tenga cuidado de no ejecutar el comando kill 1 ya que si ejecuta este comando como
+root terminará el proceso init, un proceso muy importante que posiblemente hará que todo
+su sistema se vuelva inestable.
+2
+Siempre se puede omitir el SIG del nombre de la señal, es decir, usar kill -QUIT %1 en
+vez de kill -SIGQUIT %1
+3
+Esta opción muchas veces se documentoa como kill -9, nosotros preferimos usar el
+nombre de la señal y no su número.
+Pág 138
+
+

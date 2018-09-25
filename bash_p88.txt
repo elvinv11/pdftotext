@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+1. Opciones de la línea de comandos
+Es muy típico que los comandos UNIX tengan el formato:
+comando [-opciones] argumentos
+Es decir, las opciones suelen preceder a los argumentos y tienen un guión
+delante.
+Las opciones, al igual que los argumentos se reciben en las variables
+posiciónales, con lo que si por ejemplo ejecutamos hacer -o esto.txt
+aquello.txt, en $1 recibimos -o, en $2 recibimos esto.txt y en $3
+recibimos aquello.txt. Luego en principio para tratar las opciones no
+necesitaríamos aprender nada más. El problema está en que normalmente las
+opciones son "opcionales", es decir, pueden darse o no, con lo que el script
+que procesa la opción anterior debería tener la forma:
+if [ $1 = -o ]; then
+Ejecuta la operación con $2 y $3
+else
+Ejecuta la operación con $1 y $2
+fi
+En consecuencia, cuando el número de opciones crece, la programación de
+scripts se vuelve engorrosa.
+
+1.1. La sentencia shift
+Afortunadamente la sentencia shift nos permite solucionar este engorro
+elegantemente. Esta sentencia tiene el formato:
+shift [n]
+Donde n es el número de desplazamientos a la izquierda que queremos hacer
+con los argumentos. Si se omite n por defecto vale 1. Luego, en el ejemplo
+anterior, si ejecutamos el comando shift 1, $1 pasará a ser esto.txt, $2
+pasa a ser aquello.txt, y la opción se pierde.
+Esto nos permite hacer es script anterior más sencillo:
+if [ $1 = -o ]; then
+Procesa -o
+shift
+fi
+Ejecuta la operación con $1 y $2
+Pág 88
+
+

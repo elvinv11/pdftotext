@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+Si queremos saber que elementos son no nulos en un array podemos usar la
+forma ${!array[@]}, donde array es el nombre del array a consultar1:
+$ echo ${!C[@]}
+5 6 7
+Si asignamos un array compuesto a un array se pierden los valores
+existentes, y se asignan los nuevos. Por ejemplo si a C del ejemplo anterior le
+asignamos:
+$ C=(Hola "Que tal" Adios)
+$ declare -p C
+declare -a C='([0]="Hola" [1]="Que tal" [2]="Adios")'
+Se pierden los elementos 5, 6 y 7 que teníamos asignados.
+Podemos borrar una entrada de un array usando unset sobre ese índice:
+$ unset C[2]
+$ declare -p C
+declare -a C='([0]="Hola" [1]="Que tal")'
+O bien borrar todo el array usando unset sobre el nombre del array:
+$ unset C
+$ declare -p C
+bash: declare: C: not found
+Obsérvese que este comportamiento es distinto al de asignar un valor al
+nombre del array, que lo que hace es asignárselo al elemento de índice 0.
+Por último vamos a comentar que algunas de las variables de entorno de
+Bash son arrays. Por ejemplo BASH_VERSINFO es un array de sólo lectura
+con información sobre la instancia actual de Bash:
+$ declare -p BASH_VERSINFO
+declare -ar BASH_VERSINFO='([0]="3" [1]="00" [2]="0"
+[3]="1" [4]="release" [5]="powerpc-apple-darwin7.9.0")'
+O por ejemplo PIPESTATUS es un array con los códigos de terminación de
+los comandos del último pipe ejecutado. Por ejemplo si ejecutamos ls|more,
+el comando acaba correctamente, y después consultamos este array:
+
+1
+
+Esta funcionalidad sólo está disponible a partir de Bash 3.0
+Pág 104
+
+

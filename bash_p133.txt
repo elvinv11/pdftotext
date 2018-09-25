@@ -1,0 +1,99 @@
+El shell Bash
+
+MacProgramadores
+
+$ jobs
+[1]+ Stopped
+du -d 1 / >ocupaciondisco.txt
+$ bg %1
+[1]+ du -d 1 / >ocupaciondisco.txt &
+$ jobs
+[1]+ Running
+du -d 1 / >ocupaciondisco.txt &
+
+2.3. El comando ps
+El comando ps nos da información sobre los procesos que se están
+ejecutando en una máquina. Si ejecutamos ps sin argumentos nos da
+información sobre el proceso del shell y los procesos en background que se
+están ejecutando en este shell.
+Por desgracia la forma de funcionar de este comando depende de si estamos
+en un UNIX de la familia BSD (p.e. Mac OS X), o en UNIX de la familia System
+V (p.e. Linux). En la primera familia nos da cinco columnas de información: El
+ID del proceso, el terminal donde se está ejecutando, el estado del proceso,
+el tiempo de CPU consumido y el comando. Por ejemplo en Mac OS X con un
+proceso en background obtenemos:
+$ ps
+PID TT
+709 std
+759 std
+
+STAT
+Ss
+R
+
+TIME COMMAND
+0:00.22 -bash
+0:07.29 du -d 1 /
+
+Obsérvese que el proceso ps no informa de su propia existencia, cosa que el
+ps de la familia System V sí hace.
+En el System V se producen sólo cuatro de los cinco campos anteriores, el
+estado del proceso no se da. Por ejemplo en Linux obtendríamos esta salida:
+$ ps
+PID TTY
+152 tty2
+214 tty2
+217 tty2
+
+TIME
+00:00:01
+00:00:03
+00:00:00
+
+CMD
+bash
+du
+ps
+
+En ambos podemos obtener información extendida sobre todos los procesos
+asociados a nuestro usuario (nos sólo los del terminal actual) poniendo la
+opción -u. Por ejemplo en Mac OS X obtenemos esta salida:
+$ ps -u
+USER
+fernando
+fernando
+fernando
+
+PID
+831
+709
+799
+
+%CPU
+7.6
+0.0
+0.0
+
+%MEM VSZ
+0.1 18060
+0.2 18644
+0.2 18644
+
+RSS
+304
+860
+848
+
+Pág 133
+
+TT STAT STAR
+p2 R+ 10:58
+std Ss 10:41
+p2 Ss 10:58
+
+TIME CMD
+00.14 du
+00.23 -bash
+00.11 -bash
+
+

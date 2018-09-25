@@ -1,0 +1,29 @@
+El shell Bash
+
+MacProgramadores
+
+5. Ejecución secuencial y concurrente de
+comandos
+Podemos ejecutar un comando que tarde mucho en ejecutarse y dejarlo
+ejecutando en background precediéndolo por &. Por ejemplo para compilar un
+conjunto de ficheros fuente de un programa C++ podemos hacer:
+$ gcc *.cpp &
+Aunque el proceso se sigue ejecutando en background, los mensajes que
+produce salen en la consola impidiéndonos trabajan cómodamente. Para
+evitarlo podemos enviar los mensajes a /dev/null:
+$ gcc *.cpp > /dev/null &
+Aunque si se produce un error, éste irá a la salida de errores estándar, con lo
+que seguiría saliendo en consola. Podríamos evitarlo redirigiendo también la
+salida de errores estándar, pero quizá sea mejor que se nos informase del
+error.
+Otras veces lo que queremos es esperar a que se acabe de ejecutar un
+comando para ejecutar el siguiente, en este caso podemos usar el operador ;
+(punto y coma), por ejemplo, podríamos querer compilar el comando clave
+para luego ejecutarlo:
+$ gcc clave.cpp -o clave ; clave
+Este comando primero compila el programa, y cuando acaba de compilarlo lo
+ejecuta.
+
+Pág 19
+
+

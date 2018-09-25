@@ -1,0 +1,70 @@
+El shell Bash
+
+MacProgramadores
+
+6. Caracteres especiales y entrecomillado
+Los caracteres <, >, |, & *, ? , ~, [, ], {, } son ejemplos de caracteres
+especiales para Bash que ya hemos visto. La Tabla 1.2 muestra todos los
+caracteres especiales de Bash.
+Más adelante veremos otros comandos tienen sus propios caracteres
+especiales, como puedan ser los comandos que usan expresiones regulares o
+los operadores de manejo de cadenas.
+Carácter
+~
+`
+#
+$
+&
+;
+*
+?
+/
+(
+)
+\
+<
+>
+|
+[
+]
+{
+}
+'
+"
+!
+
+Descripción
+Directorio home
+Sustitución de comando
+Comentario
+Variable
+Proceso en background
+Separador de comandos
+Comodín 0 a n caracteres
+Comodín de un sólo carácter
+Separador de directorios
+Empezar un subshell
+Terminar un subshell
+Carácter de escape
+Redirigir la entrada
+Redirigir la salida
+Pipe
+Empieza conjunto de caracteres comodín
+Acaba conjunto de caracteres comodín
+Empieza un bloque de comando
+Acaba un bloque de comando
+Entrecomillado fuerte
+Entrecomillado débil
+No lógico de código de terminación
+
+Tabla 1.2: Caracteres especiales de Bash
+
+6.1. Entrecomillado
+Aunque los caracteres especiales son muy útiles para Bash, a veces queremos
+usar un carácter especial literalmente, es decir sin su significado especial, en
+este caso necesitamos entrecomillarlo (quoting).
+Por ejemplo si queremos escribir en consola el mensaje: 2*3>5 es una
+expresión cierta, podemos usar el comando echo así:
+Pág 20
+
+

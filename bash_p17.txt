@@ -1,0 +1,38 @@
+El shell Bash
+
+MacProgramadores
+
+$ date > ahora
+Envía el día y hora actuales al fichero ahora.
+También podemos cambiar a la vez la entrada y salida estándar de un
+programa usando ambos operadores de redirección. Por ejemplo:
+$ cat < ficheroa > ficherob
+También podemos cambiar la salida de errores estándar con el operador de
+redirección 2>. Por ejemplo:
+$ cat < ficheroa > ficherob 2>errores
+Copia el ficheroa en el ficherob, y si se produce algún error lo escribe en
+el fichero errores.
+Si no queremos sobrescribir un fichero de salida sino añadir el contenido al
+final podemos usar el operador de redirección >> para la salida estándar o
+2>> para los errores estándar. Por ejemplo:
+$ ls p* >>ficheros 2>>errores
+Añadiría los ficheros que lista ls al fichero ficheros, y si se produjesen
+errores los añadiría al fichero errores. El operador de redirección 2>> es
+especialmente útil para almacenar los conocidos logs de errores.
+Muchas veces no se quiere que un programa muestre mensajes en la consola
+del usuario, en este caso es muy común redirigir su salida estándar y salida
+de errores estándar al fichero /dev/null:
+$ gcc *.cpp > /dev/null 2> /dev/null
+
+4.2. Pipes
+Es posible redirigir la salida estándar de un programa a la entrada estándar
+de otro usando el operador | (pipeline).
+more es uno de los comandos típicos que lo usan. Este comando lo que hace
+es recoger la entrada estándar y irla mostrando poco a poco (página a
+página), luego si por ejemplo tenemos un directorio con muchos ficheros
+podemos hacer:
+$ ls -la | more
+y se irán mostrando página a página los ficheros.
+Pág 17
+
+

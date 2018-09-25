@@ -1,0 +1,43 @@
+El shell Bash
+
+MacProgramadores
+
+Bash además nos permite usar los operadores relacionales (<, >, <= ,>= ,==
+,!=) y lógicos de C (!, &&, ||) interpretando, al igual que C, el 1 como cierto
+y el 0 como falso. Conviene no confundir los operadores relacionales de las
+expresiones aritméticas con los operadores de comparación numérica de
+cadenas que vimos en la Tabla 5.2. Los primeros van dentro de $((...)),
+mientras que los segundos forman parte de una expresión que pasamos al
+comando interno test o encerramos entre corchetes [...]. Lo que sí se
+cumple es que $((...)) devuelve el código de terminación 0 cuando la
+expresión se evalúa como cierta, y viceversa.
+
+3.2. El comando interno let
+El comando interno let nos permite asignar el resultado de una expresión
+aritmética a una variable. Tiene la siguiente sintaxis:
+let var=expresion
+expresion es cualquier expresión aritmética y no necesita estar encerrada
+entre $((...)).
+El comando let, a diferencia del comando declare -i, no crea una
+variable de tipo entero, sino una variable de tipo cadena de caracteres
+normal. Por ejemplo:
+$ let a=4*3
+$ declare -p a
+declare -- a="12"
+Vemos que a es del tipo normal. Mientras que si usamos declare -i nos la
+crea de tipo entero:
+$ declare -i a=3*4
+$ declare -p a
+declare -i a="12"
+Al igual que pasa con las variables normales, las declaradas con let no
+pueden tener espacios entre la variable y el signo =, ni entre el signo = y el
+valor. Aunque sí pueden tener espacios si encerramos la expresión entre
+comillas:
+$ let x=" (9*5) / 7 "
+$ echo $x
+6
+Vemos que la aritmética entera pierde los redondeos.
+
+Pág 97
+
+

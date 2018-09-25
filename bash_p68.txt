@@ -1,0 +1,22 @@
+El shell Bash
+
+MacProgramadores
+
+Tema 5
+Control de flujo
+
+Sinopsis:
+
+Las sentencias de control de flujo es un denominador común de la mayoría de
+los lenguajes de programación, incluido Bash.
+En este tema veremos las sentencias de control de flujo (if, else, for,
+while, until, case y select). Supondremos que el lector ya conoce lo
+que son, hipótesis bastante fácil de asumir teniendo en cuenta su gran
+difusión. Lo que vamos a hacer a lo largo de este tema es resaltar sus
+peculiaridades en el caso de Bash, y mostrar ejemplos de su funcionamiento
+con ejemplos que ayuden a recordar las muchas variantes que de ellas
+existen.
+
+Pág 68
+
+

@@ -1,0 +1,53 @@
+El shell Bash
+
+MacProgramadores
+
+2. Variables con tipo
+Hasta ahora todas las variables de entorno que hemos usado eran de tipo
+cadena de caracteres. Aunque en los primeros shells las variables sólo podían
+contener cadenas de caracteres, después se introdujo la posibilidad de
+asignar atributos a las variables que indican, por ejemplo, que son enteras o
+de sólo lectura. Para fijar los atributos de las variables tenemos el comando
+interno declare, el cual tiene la siguiente sintaxis:
+declare [-afFirx] [-p] name[=value] ...
+La Tabla 6.1 describe las opciones que puede recibir este comando. Una
+peculiaridad de este comando es que para activar un atributo se precede la
+opción por un guión -, con lo que para desactivar un atributo decidieron
+preceder la opción por un +.
+Opción
+-a
+-f
+-F
+-i
+-r
+-x
+
+Descripción
+La variable es de tipo array
+Mostrar el nombre e implementación de las funciones
+Mostrar sólo el nombre de las funciones
+La variable es de tipo entero
+La variable es de sólo lectura
+Exporta la variable (equivalente a export)
+
+Tabla 6.1: Opciones del comando interno declare
+
+Si escribimos declare sin argumentos nos muestra todas las variables de
+entorno. Si usamos la opción -f nos muestra sólo los nombres de funciones y
+su implementación, y si usamos la opción -F nos muestra sólo los nombres
+de las funciones existentes.
+Las variables que se declaran con declare dentro de una función son
+variables locales a la función, de la misma forma que si hubiésemos usado el
+modificador local.
+La opción -i nos permite declarar una variable de tipo entero, lo cual permite
+que podamos realizar operaciones aritméticas con ella. Por ejemplo, si
+usamos variables de entorno normales para realizar operaciones aritméticas:
+$ var1=5
+$ var2=4
+$ resultado=$var1*$var2
+$ echo $resultado
+5*4
+
+Pág 93
+
+

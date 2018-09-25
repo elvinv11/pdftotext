@@ -1,0 +1,42 @@
+El shell Bash
+
+MacProgramadores
+
+5. Reatachar sesiones del terminal
+Si vamos a lanzar un proceso largo en un host (por ejemplo conectándonos
+con ssh) podemos querer cerrar la sesión de terminal y volver otro día a
+recoger los resultados.
+En el apartado 2.1 vimos que una vez que cerramos el terminal los jobs en
+background que vimos en el apartado 2.1 reciben la señal SIGHUP (hangup)
+y si no capturaban la señal, terminaban. En el apartado 4.4 vimos cómo hacer
+que un proceso ignore la señal SIGHUP para que no termine, pero una vez
+que nos desatachamos del terminal no ponemos volver a atacharnos.
+El comando screen permite resolver este problema. Con este comando
+podemos lanzar un comando en una sesión de pantalla, cerrar el terminal y
+más tarde volver a abrir otra sesión de terminal desde la que reatacharnos al
+proceso que hemos dejado ejecutando en la sesión de pantalla.
+Para usar screen lo primero que tenemos que hacer es abrir una sesión de
+pantalla, para lo cual podemos:
+1. Ejecutar simplemente el comando screen. Se nos muestra un mensaje
+de bienvenida y tras pulsar intro o espacio se nos abre otra sesión de
+pantalla con un shell.
+2. Ejecutar screen seguido del comando a ejecutar en cuyo caso también
+se nos abre otra sesión de pantalla con el comando pasado ejecutando.
+Por ejemplo:
+$ screen -ls
+No Sockets found in /home/flh/.screen.
+$ screen aircrack-ng colecta*.ivs
+En este momento entramos en la sesión de pantalla. Para salir de la sesión de
+pantalla se usa la combinación de teclas Ctrl+a seguida por una d.
+Después, para ver las sesiones de pantalla abiertas usamos el comando
+screen con la opción -ls. Por ejemplo, tras el comando anterior
+tendríamos:
+$ screen -ls
+There is a screen on:
+4132.pts-3.medusa1 (Detached)
+1 Socket in /home/flh/.screen.
+En este momento podemos cerrar el terminal y el proceso seguirá lanzado en
+el host.
+Pág 144
+
+

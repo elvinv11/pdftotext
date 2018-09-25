@@ -1,0 +1,40 @@
+El shell Bash
+
+nullglob
+
+sourcepath
+
+MacProgramadores
+
+ignore-case de inputrc que lo que hacía
+era expandir con tabulador.
+Hace que cuando un patrón no encuentra
+ficheros, se expandan por la cadena vacía en vez
+de por el patrón sin expandir.
+Hace que el comando interno source busque el
+argumento en los directorios que indique PATH
+
+Tabla 3.1: Principales opciones de shopt
+
+Una opción que resulta muy útil es cdable_vars, la cual permite que el
+comando cd use los valores de las variables como nombres de directorios.
+Esto se usa cuando hay un directorio al que solemos movernos mucho. Por
+ejemplo si tenemos el directorio /usr/local/mldonkey/incomming al
+que solemos ir muy a menudo desde la consola podemos definir en los
+ficheros de configuración de Bash:
+# Para ir a mldonkey
+export DONKEY=/usr/local/mldonkey/incomming
+shopt -s cdable_vars
+Y ahora para movernos a este directorio basta con hacer:
+$ cd DONKEY
+Obsérvese que DONKEY no va precedida por $.
+Otra opción muy útil es cdspell que permite que se ignoren pequeños
+errores en los directorios que indicamos a cd. Por ejemplo este pequeño baile
+de letras es corregido por cd:
+$ cd /usr/locla/share/
+/usr/local/share/
+Esta opción sólo funciona en modo interactivo.
+
+Pág 40
+
+

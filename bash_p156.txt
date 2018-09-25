@@ -1,0 +1,32 @@
+El shell Bash
+
+MacProgramadores
+
+2.3. La señal SIGDEBUG
+La señal SIGDEBUG, cuando se activa con trap, se lanza justo antes de
+ejecutar un comando. El principal uso de está función lo veremos en el
+apartado 3 donde construiremos un depurador.
+Un problema que tiene esta señal es que no se hereda en las funciones que
+ejecutemos desde el script, con lo que si queremos heredarla tenemos tres
+opciones: Activarla con trap dentro de cada función, declarar la función con
+declare -t que hace que la función si herede el trap, o fijar la opción del
+shell set -o functrace (o set -F), que hace que todas las funciones
+hereden el trap de SIGDEBUG.1
+
+2.4. La señal SIGRETURN
+La señal SIGRETURN se lanza cada vez que retornamos de una función, o
+retornamos de ejecutar un script con source. La señal no se lanza cuando
+acabamos de ejecutar un comando script (a no ser que lo ejecutemos con
+source). Si queremos hacer esto último debemos usar SIGEXIT.
+Al igual que SIGDEBUG, la señal SIGRETURN no es heredada por las
+funciones. De nuevo podemos hacer que una función herede esta señal,
+declarando a la función con declare -t, o bien activando la opción set -o
+functrace.
+
+1
+
+La herencia de traps con declare -t, set -o functrace o set -F sólo están
+disponibles a partir de Bash 3.0
+Pág 156
+
+

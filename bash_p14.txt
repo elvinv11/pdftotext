@@ -1,0 +1,24 @@
+El shell Bash
+
+MacProgramadores
+
+También vimos en el apartado 2.1 que *.[cho] encontraría los ficheros con
+extensión .c, .o y .h, pero no había forma de encontrar los .cpp ya que el
+corchete sólo aceptaba un carácter. Ahora podemos usar el comodín
+@(pattern-list) para indicar la lista de extensiones a aceptar. Por
+ejemplo *.@(c|o|h|cpp) encontraría correctamente estos ficheros:
+$ ls *.@(c|o|h|cpp)
+clave.cpp clave.h
+También hubiera sido equivalente usar @(*.c|*.o|*.h|*.cpp) ya que los
+patrones pueden estar anidados.
+Si lo que hubiéramos querido es encontrar todos los ficheros excepto los
+.gif, los .jpg y los .html podríamos haber usado el patrón
+!(*.html|*gif|*jpg). Sin embargo, en este caso no podríamos haber
+usado *.!(html|gif|jpg)
+Un último ejemplo, si queremos borrar todos los ficheros excepto los que
+empiezan por vt seguido por uno o más dígitos podemos usar el comando:
+$ rm !(vt+([0-9]))
+
+Pág 14
+
+

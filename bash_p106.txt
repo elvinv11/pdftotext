@@ -1,0 +1,38 @@
+El shell Bash
+
+MacProgramadores
+
+function elegirdir
+{
+# Si no hay directorios da error
+if [ ${#PILADIR[@]} -eq 0 ]; then
+echo "No hay directorios en la pila"
+fi
+PS3='Eliga directorio:'
+select dir in ${PILADIR[@]}
+do
+if [ $dir ]; then # Se ha elegido directorio valido
+# Mas de un dir en la pila
+if [ ${#PILADIR[@]} -gt 1 ]; then
+aux=${PILADIR[$(($REPLY-1))]}
+echo "Elegida la opcion $REPLY con $aux"
+n_elementos=${#PILADIR[@]}
+for ((i=$REPLY-1;i<n_elementos-1;i++))
+do
+PILADIR[$i]=${PILADIR[$((i+1))]}
+done
+PILADIR[$((n_elementos-1))]=$aux
+fi
+cd $dir
+echo ${PILADIR[@]}
+break
+else
+echo "Opcion no valida"
+fi
+done
+}
+Listado 6.5: Solución a ira() volver() y elegirdir() usando arrays
+
+Pág 106
+
+

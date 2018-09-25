@@ -1,0 +1,45 @@
+El shell Bash
+
+MacProgramadores
+
+$ function recibe
+> {
+> echo "La funcion $0"
+> echo "Recibe los argumentos $1 $2 $3 $4"
+> }
+$ recibe buenos dias Bash
+La funcion -bash
+Recibe los argumentos buenos dias Bash
+Como los nombres de funciones tienen preferencia sobre los de los scripts
+ahora se ejecuta la función recibe() y no el script recibe. Vemos que
+ahora $0 no se ha sustituido por el nombre de la función sino por -bash,
+esto es así porque $0 siempre se sustituye por el nombre de script (no el de
+la función), o -bash si lo ejecutamos directamente desde la línea de
+comandos.
+Por último comentar que no podemos modificar el valor de las variables
+posiciónales, sólo se pueden leer, si intentamos asignarlas un valor se
+produce un error.
+
+2.2. Variables locales y globales
+Por defecto los parámetros posiciónales son locales al script o función y no se
+pueden acceder o modificar desde otra función. Por ejemplo en el Listado 4.2
+vemos un script, que guardaremos en el fichero saluda, que llama a una
+función para que salude al nombre que pasamos al script como argumento en
+$1:
+# Script que llama a una funcion para saludar
+function DiHola
+{
+echo "Hola $1"
+}
+DiHola
+Listado 4.2: Script que llama a una función para saludar
+
+Al ejecutarlo obtenemos:
+$ saluda Fernando
+Hola
+Vemos que el argumento pasado en $1 no a sido cogido por la función, eso
+es porque $1 es local al script, y si queremos que lo reciba la función
+tendremos que pasárselo como muestra el Listado 4.3.
+Pág 50
+
+

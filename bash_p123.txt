@@ -1,0 +1,46 @@
+El shell Bash
+
+MacProgramadores
+
+Ahora podemos ejecutar la función (además del script):
+$ source iddegrupo
+$ IDdeGrupo www
+70
+Incluso, si el único que va a utilizar esa entrada es el bucle while, podemos
+redirigir la entrada estándar durante la ejecución del bucle while como
+muestra el Listado 7.9.
+function IDdeGrupo
+{
+IFS=:
+while read grupo asterisco ID resto
+do
+if [ $1 = $grupo ]; then
+echo $ID
+return
+fi
+done < /etc/group
+}
+Listado 7.9: Redirigir la entrada de un bucle
+
+Por último, también podemos redirigir la entrada de un conjunto de
+comandos creando un llamado bloque de comandos, los cuales encierran
+un conjunto de comandos entre llaves, tal como muestra el Listado 7.10.
+{
+IFS=:
+while read grupo asterisco ID resto
+do
+if [ $1 = $grupo ]; then
+echo $ID
+exit
+fi
+done
+} < /etc/group
+Listado 7.10: Bloque de comandos con la entrada redirigida
+
+Lógicamente, también podemos modificar la salida estándar de un bloque de
+comandos. El Listado 7.11 muestra un ejemplo de como redirigir esta salida a
+un fichero.
+
+Pág 123
+
+

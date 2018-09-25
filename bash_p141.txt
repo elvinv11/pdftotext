@@ -1,0 +1,44 @@
+El shell Bash
+
+MacProgramadores
+
+función que fija un trap. En trap seguirá activo cuando nos metamos en el
+bucle.
+function fijatrap
+{
+trap "echo 'Pulsaste Ctrl+C!'" INT
+}
+fijatrap
+while true
+do
+sleep 60;
+echo "Cambio de minuto"
+done
+Listado 8.3: Función que fija un trap
+
+4.3. IDs de proceso
+Vamos a ver aquí otras dos variables especiales: $ y ! (a cuyo valor
+accedemos con $$ y $!). La primera almacena el ID de nuestro proceso, la
+segunda almacena el ID del último proceso en background que ejecutamos.
+Por ejemplo, si ejecutamos un proceso en background, y a continuación
+preguntamos por el valor de $!:
+$ ls > /dev/null &
+[1] 795
+$ echo $!
+795
+Si desde el terminal preguntamos por $$:
+$ echo $$
+744
+Nos devuelve el ID de proceso del shell Bash en el que estamos.
+El directorio /tmp (muchos sistemas tienen también el directorio /var/tmp)
+es un directorio destinado a almacenar ficheros temporales que se borrar al
+apagar la máquina. Esto evita que la máquina se llene de ficheros temporales
+que ocupan disco de forma innecesaria. Muchas veces se usa el ID de
+proceso del script para asignar nombre a los ficheros temporales. Por
+ejemplo, en el Ejemplo 6.1 hicimos un script llamado tojpg que convertía un
+fichero en cualquier formato a formato .jpg. Además el script nos permitía
+escalar y poner borde al fichero, pero para hacer esto último teníamos que
+
+Pág 141
+
+

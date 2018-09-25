@@ -1,0 +1,19 @@
+El shell Bash
+
+MacProgramadores
+
++ fntcb=mifich.txt
+++ cut -f3
+y esto nos ayuda a identificar que el problema está en que la variable fntcb
+no se ha expandido correctamente y cut está leyendo de la entrada
+estándar. ¿Ve por qué?.
+La opción noexec sirve para que Bash no ejecute los comandos, sólo lea los
+comandos y compruebe su sintaxis. Sin embargo una vez que activa esta
+opción con set -o noexec ya no podrá volver a desactivarla, ya que el
+comando set +o noexec será parseado pero no ejecutado por Bash. En
+consecuencia use está opción sólo para pasársela a otro subshell de la forma:
+$ bash -n lsfecha '9 Aug'
+
+Pág 153
+
+

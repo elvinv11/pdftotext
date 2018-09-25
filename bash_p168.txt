@@ -1,0 +1,24 @@
+El shell Bash
+
+MacProgramadores
+
+Referencias
+Para la elaboración de este texto nos hemos basado principalmente en los
+textos que se enumeran a continuación.
+[1]
+
+Cameron Newham, "Learning the bash Shell, Third Edition", O'Reilly
+March 2005
+
+[2]
+
+John Paul Wallington, "Bash Reference Manual", August 2005.
+
+[3]
+
+Mendel Cooper, "Advanced Bash-Scripting Guide", Free Software
+Foundation, July 2002.
+
+Pág 168
+
+

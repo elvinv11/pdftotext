@@ -1,0 +1,61 @@
+El shell Bash
+
+MacProgramadores
+
+para que stdout se envíe a stdin (el fichero clientes.txt). Téngase en
+cuenta que:
+$ sort 0<clientes.txt 1>&0
+sort: -: write error: Bad file descriptor
+Falla porque por defecto stdin es un descriptor de sólo lectura.
+A veces queremos enviar tanto stdout como stderr a un mismo fichero,
+siempre podemos redirigir ambos stream de salida así: gcc *.c 1>
+errores.log 2>errores.log, pero una forma alternativa más corta es
+usar el operador &>fichero de la forma gcc *.c &>errores.log.
+Si lo que queremos es que el resultado de un comando vaya a la salida de
+errores estándar, en vez de a la salida estándar, podemos usar >&2. Por
+ejemplo, para dar un mensaje en la stderr podemos hacer:
+echo "Operación incorrecta" >&2
+
+1.2. El comando exec
+El comando interno exec nos permite cambiar las entradas y salidas de un
+conjunto de comandos (de todos los que se ejecuten a partir de él).
+Por ejemplo el Listado 7.1 hemos usado exec para que la entrada estándar la
+lea del fichero data-file. El operador n<&- se usa para cerrar el fichero
+con descriptor n.
+exec 6<&0
+exec < data-file
+read a1
+read a2
+echo
+echo
+echo
+echo
+echo
+
+#
+#
+#
+#
+
+Enlaza el descriptor 6 a stdin.
+Esto se hace para salvar stdin
+Reemplaza stdin por el
+fichero data-file
+
+# Lee la primera línea de data-file
+# Lee la segunda línea de data-file
+
+"Líneas leidas del fichero"
+"-------------------------"
+$a1
+$a2
+
+exec 0<&6 6<&-
+
+# Restaura stdin
+
+Listado 7.1: Script que lee de un fichero
+
+Pág 111
+
+

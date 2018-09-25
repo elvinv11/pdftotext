@@ -1,0 +1,41 @@
+El shell Bash
+
+MacProgramadores
+
+4. Redirecciones y pipes
+4.1. Operadores de redirección
+UNIX está basado en una idea muy simple pero muy útil: Tratar todos las
+entrada y salidas como streams (flujos) de bytes.
+Cada programa va a tener asociadas siempre una entrada estándar (por
+defecto el teclado), una salida estándar (por defecto la consola), y una salida
+de errores estándar (por defecto también la consola).
+Si queremos, podemos cambiar la entrada estándar para que el programa
+reciba datos de un fichero usando el operador de redirección <. Por
+ejemplo el comando cat, si no recibe argumentos, lee del teclado por la
+entrada estándar y lo pasa a la salida estándar:
+$ cat
+Esto es una linea acabada en intro
+Esto es una linea acabada en intro
+^D
+Podemos indicar el final de un stream desde el teclado con la combinación de
+teclas Ctrl+D como se muestra en el ejemplo.
+Podemos cambiar la entrada estándar de cat para que lea de un fichero con:
+$ cat < clave.h
+#ifndef CLAVE_H_
+·····
+En el caso concreto del comando cat, también puede recibir como
+argumento el nombre del fichero a pasar a la salida estándar, con lo que en el
+caso del comando cat nos podríamos haber ahorrado el operador <:
+$ cat clave.h
+#ifndef CLAVE_H_
+·····
+UNIX dispone de un gran número de comandos que leen de la entrada
+estándar, realizan una operación con el texto, y escriben en la salida estándar
+(o en la salida de errores si se produce un error): cat, grep, soft, cut,
+sed, tr,...
+El operador de redirección de salida > permite cambiar la salida estándar
+de un comando, por ejemplo:
+
+Pág 16
+
+

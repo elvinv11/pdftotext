@@ -1,0 +1,48 @@
+El shell Bash
+
+MacProgramadores
+
+fichero_clientes=$1
+fichero_clientes=${fichero_clientes:?'no suministrado'}
+Aunque si no se suministraba se daba un mensaje un poco críptico para el
+usuario:
+./mejoresclientes: fichero_clientes: no suministrado
+Ahora usando la sentencia if vamos a mejorar el programa para que de un
+mensaje más descriptivo:
+fichero_clientes=$1
+if [ -z "$fichero_clientes" ] ; then
+echo 'Use: mejoresclientes <fichero_clientes> [<N>]'
+else
+cuantos=$2
+defecto=5
+sort -nr $fichero_clientes | head -${cuantos:=$defecto}
+fi
+Aunque normalmente se considera mejor técnica de programación el encerrar
+todo el código dentro de un bloque if y de otro bloque else, en este caso el
+bloque if corresponde a una situación de error que debería abortar todo el
+script, con lo que vamos a poner un exit, y dejamos el ejemplo como se
+muestra en el Listado 5.1.
+# Script que saca los mejores clientes
+# Tiene la forma
+#
+mejoresclientes <fichero> [<N>]
+fichero_clientes=$1
+if [ -z "$fichero_clientes" ] ; then
+echo 'Use: mejoresclientes <fichero_clientes> [<N>]'
+exit 1
+fi
+cuantos=$2
+defecto=5
+sort -nr $fichero_clientes | head -${cuantos:=$defecto}
+Listado 5.1: Script que lista los mejores clientes mejorado
+
+1.5.2.
+
+Comparación numérica de enteros
+
+El shell también permite comparar variables que almacenan cadenas
+interpretando estas cadenas como números, para ello se deben utilizar los
+operadores de la Tabla 5.2.
+Pág 75
+
+
