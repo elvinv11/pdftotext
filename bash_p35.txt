@@ -1,13 +1,0 @@
-El shell Bash
-
-MacProgramadores
-
-$ bind -p > .inputrc
-Por último comentar que podemos asignar combinaciones de teclas que
-ejecutan comandos comunes con la opción -x:
-$ bind -x "\"\C-l\": ls -la"
-Ejecutará ls -la al pulsar Ctrl+L.
-
-Pág 35
-
-

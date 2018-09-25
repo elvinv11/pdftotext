@@ -1,15 +1,0 @@
-El shell Bash
-
-MacProgramadores
-
-Para reatacharnos a la sesión de pantalla podemos usar el comando screen
-con la opción -r y opcionalmente (si hay más de una) el nombre de la sesión
-de pantalla:
-$ screen -r
-Si tuviéramos más de una sesión de pantalla, debemos indicar a cuál de ellas
-queremos reatacharnos de la forma:
-$ screen -r 4216.pts-3.medusa1
-
-Pág 145
-
-

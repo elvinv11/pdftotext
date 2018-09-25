@@ -1,16 +1,0 @@
-El shell Bash
-
-MacProgramadores
-
-Según vayamos avanzando podremos ir viendo ejemplos más complejos, por
-ejemplo:
-$ cut -d: -f1 < /etc/passwd | sort
-Nos muestra los nombres de todos los usuarios de la máquina ordenados
-alfabéticamente.
-Téngase en cuenta que el operador | separa el comando en varios comandos
-antes de ejecutarlo, con lo que el operador de redirección tiene efecto sólo
-para el comando cut.
-
-Pág 18
-
-

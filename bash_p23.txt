@@ -1,15 +1,0 @@
-El shell Bash
-
-MacProgramadores
-
-> quiero acordarme no a mucho tiempo vivía un
-> hidalgo caballero.'
-En un lugar de la Mancha de cuyo nombre no
-quiero acordar no a mucho tiempo vivía un
-hidalgo caballero.
-La diferencia está en que en el primer caso los retornos de carro son
-eliminados, y en el segundo caso no.
-
-Pág 23
-
-
